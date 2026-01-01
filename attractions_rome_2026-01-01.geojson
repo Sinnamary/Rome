@@ -11,6 +11,7 @@
         ]
       },
       "properties": {
+        "ordre": 1,
         "name": "Fontana di Trevi",
         "description": "Visite prévue le Mardi 2026-04-14 de 09:00 à 09:45",
         "prix": 0,
