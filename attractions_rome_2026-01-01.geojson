@@ -1,0 +1,511 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4833,
+          41.9009
+        ]
+      },
+      "properties": {
+        "name": "Fontana di Trevi",
+        "description": "Visite prévue le Mardi 2026-04-14 de 09:00 à 09:45",
+        "prix": 0,
+        "duree": "0:45",
+        "date": "2026-04-14",
+        "heure_debut": "09:00",
+        "heure_fin": "09:45",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4814,
+          41.8978
+        ]
+      },
+      "properties": {
+        "name": "Palazzo Doria Pamphilj",
+        "description": "Visite prévue le Mardi 2026-04-14 de 10:00 à 11:45",
+        "prix": 17,
+        "duree": "1:45",
+        "date": "2026-04-14",
+        "heure_debut": "10:00",
+        "heure_fin": "11:45",
+        "carte": "Aucune",
+        "billet_requis": true,
+        "url_billet": "https://ticketroma.doriapamphilj.it/en/biglietteria/gallery-ticket/",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4778,
+          41.8981
+        ]
+      },
+      "properties": {
+        "name": "Piazza della Minerva",
+        "description": "Visite prévue le Mardi 2026-04-14 de 11:45 à 12:00",
+        "prix": 0,
+        "duree": "0:15",
+        "date": "2026-04-14",
+        "heure_debut": "11:45",
+        "heure_fin": "12:00",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4769,
+          41.8986
+        ]
+      },
+      "properties": {
+        "name": "Panthéon",
+        "description": "Visite prévue le Mardi 2026-04-14 de 13:00 à 13:45",
+        "prix": 5,
+        "duree": "0:45",
+        "date": "2026-04-14",
+        "heure_debut": "13:00",
+        "heure_fin": "13:45",
+        "carte": "Roma",
+        "billet_requis": true,
+        "url_billet": "https://portale.museiitaliani.it/b2c/buyTicketless/33f77159-0acd-40c4-8524-701f33aae108",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4747,
+          41.9002
+        ]
+      },
+      "properties": {
+        "name": "Chiesa san Luigi dei Francesi",
+        "description": "Visite prévue le Mardi 2026-04-14 de 14:00 à 14:45",
+        "prix": 0,
+        "duree": "0:45",
+        "date": "2026-04-14",
+        "heure_debut": "14:00",
+        "heure_fin": "14:45",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4731,
+          41.8992
+        ]
+      },
+      "properties": {
+        "name": "Piazza Navona (Fontana dei Quattro)",
+        "description": "Visite prévue le Mardi 2026-04-14 de 15:00 à 15:30",
+        "prix": 0,
+        "duree": "0:30",
+        "date": "2026-04-14",
+        "heure_debut": "15:00",
+        "heure_fin": "15:30",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4986,
+          41.8974
+        ]
+      },
+      "properties": {
+        "name": "Basilica di Santa Maria - majeure",
+        "description": "Visite prévue le Mardi 2026-04-14 de 16:00 à 16:45",
+        "prix": 0,
+        "duree": "0:45",
+        "date": "2026-04-14",
+        "heure_debut": "16:00",
+        "heure_fin": "16:45",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4983,
+          41.9014
+        ]
+      },
+      "properties": {
+        "name": "Musée national romain (Palazzo Massimo)",
+        "description": "Visite prévue le Mardi 2026-04-14 de 17:00 à 19:00",
+        "prix": 15,
+        "duree": "2:00",
+        "date": "2026-04-14",
+        "heure_debut": "17:00",
+        "heure_fin": "19:00",
+        "carte": "Roma",
+        "billet_requis": true,
+        "url_billet": "https://museonazionaleromano.beniculturali.it/en/opening-hours-and-tickets/",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4664,
+          41.9019
+        ]
+      },
+      "properties": {
+        "name": "Pont Saint Angelo",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 09:00 à 09:30",
+        "prix": 0,
+        "duree": "0:30",
+        "date": "2026-04-15",
+        "heure_debut": "09:00",
+        "heure_fin": "09:30",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4539,
+          41.9022
+        ]
+      },
+      "properties": {
+        "name": "Place et Basilique Saint Pierre + Dome",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 09:30 à 11:00",
+        "prix": 0,
+        "duree": "1:30",
+        "date": "2026-04-15",
+        "heure_debut": "09:30",
+        "heure_fin": "11:00",
+        "carte": "Omnia",
+        "billet_requis": true,
+        "url_billet": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita.html",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4545,
+          41.9069
+        ]
+      },
+      "properties": {
+        "name": "Chapelle Sixtine",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 11:00 à 11:30",
+        "prix": 0,
+        "duree": "0:30",
+        "date": "2026-04-15",
+        "heure_debut": "11:00",
+        "heure_fin": "11:30",
+        "carte": "Omnia",
+        "billet_requis": true,
+        "url_billet": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita.html",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4545,
+          41.9069
+        ]
+      },
+      "properties": {
+        "name": "5 galeries d'art du Vatican",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 11:30 à 13:00",
+        "prix": 0,
+        "duree": "1:30",
+        "date": "2026-04-15",
+        "heure_debut": "11:30",
+        "heure_fin": "13:00",
+        "carte": "Omnia",
+        "billet_requis": true,
+        "url_billet": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita.html",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4545,
+          41.9069
+        ]
+      },
+      "properties": {
+        "name": "12 musées du Vatican",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 13:00 à 17:00",
+        "prix": 0,
+        "duree": "4:00",
+        "date": "2026-04-15",
+        "heure_debut": "13:00",
+        "heure_fin": "17:00",
+        "carte": "Omnia",
+        "billet_requis": true,
+        "url_billet": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita.html",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4922,
+          41.9142
+        ]
+      },
+      "properties": {
+        "name": "Galleria Borgheses",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 09:00 à 11:00",
+        "prix": 0,
+        "duree": "2:00",
+        "date": "2026-04-16",
+        "heure_debut": "09:00",
+        "heure_fin": "11:00",
+        "carte": "Roma",
+        "billet_requis": true,
+        "url_billet": "https://www.ticketone.it/en/artist/galleria-borghese/",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4772,
+          41.9186
+        ]
+      },
+      "properties": {
+        "name": "Museo nazionale etrusco",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 11:30 à 13:00",
+        "prix": 13,
+        "duree": "1:30",
+        "date": "2026-04-16",
+        "heure_debut": "11:30",
+        "heure_fin": "13:00",
+        "carte": "Roma",
+        "billet_requis": true,
+        "url_billet": "https://museoetru.it/en/visiting/tickets/",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.483,
+          41.8947
+        ]
+      },
+      "properties": {
+        "name": "Altare della Patria",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 14:45 à 15:00",
+        "prix": 0,
+        "duree": "0:15",
+        "date": "2026-04-16",
+        "heure_debut": "14:45",
+        "heure_fin": "15:00",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4828,
+          41.8932
+        ]
+      },
+      "properties": {
+        "name": "Musei Capitolini (Capitole)",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 15:00 à 17:00",
+        "prix": 15,
+        "duree": "2:00",
+        "date": "2026-04-16",
+        "heure_debut": "15:00",
+        "heure_fin": "17:00",
+        "carte": "Roma",
+        "billet_requis": true,
+        "url_billet": "https://www.museicapitolini.org/en/info/biglietti",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4814,
+          41.8978
+        ]
+      },
+      "properties": {
+        "name": "Palazzo Colonna",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 09:30 à 10:30",
+        "prix": 15,
+        "duree": "1:00",
+        "date": "2026-04-17",
+        "heure_debut": "09:30",
+        "heure_fin": "10:30",
+        "carte": "Aucune",
+        "billet_requis": true,
+        "url_billet": "https://www.palazzocolonna.it/en/visit/",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4886,
+          41.8875
+        ]
+      },
+      "properties": {
+        "name": "Circo Massimo",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 11:00 à 12:00",
+        "prix": 0,
+        "duree": "1:00",
+        "date": "2026-04-17",
+        "heure_debut": "11:00",
+        "heure_fin": "12:00",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4922,
+          41.8902
+        ]
+      },
+      "properties": {
+        "name": "Colisée + Forum romain",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 13:00 à 16:00",
+        "prix": 0,
+        "duree": "3:00",
+        "date": "2026-04-17",
+        "heure_debut": "13:00",
+        "heure_fin": "16:00",
+        "carte": "Roma",
+        "billet_requis": true,
+        "url_billet": "https://www.coopculture.it/en/ticket.cfm?office=Colosseo%20e%20Foro%20Romano&id=1",
+        "priorite": "haute"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4907,
+          41.8897
+        ]
+      },
+      "properties": {
+        "name": "Arco di Costantino",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 16:00 à 16:15",
+        "prix": 0,
+        "duree": "0:15",
+        "date": "2026-04-17",
+        "heure_debut": "16:00",
+        "heure_fin": "16:15",
+        "carte": "",
+        "billet_requis": false,
+        "url_billet": "",
+        "priorite": "moyenne"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4814,
+          41.8978
+        ]
+      },
+      "properties": {
+        "name": "Domus Romane di palazzo Valenti",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 16:30 à 17:30",
+        "prix": 15,
+        "duree": "1:00",
+        "date": "2026-04-17",
+        "heure_debut": "16:30",
+        "heure_fin": "17:30",
+        "carte": "Roma",
+        "billet_requis": true,
+        "url_billet": "https://www.domusromane.it/en/tickets/",
+        "priorite": "haute"
+      }
+    }
+  ]
+}
