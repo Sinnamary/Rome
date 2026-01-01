@@ -11,7 +11,6 @@
         ]
       },
       "properties": {
-        "ordre": 1,
         "name": "Fontana di Trevi",
         "description": "Visite prévue le Mardi 2026-04-14 de 09:00 à 09:45",
         "prix": 0,
@@ -35,7 +34,6 @@
         ]
       },
       "properties": {
-        "ordre": 2,
         "name": "Palazzo Doria Pamphilj",
         "description": "Visite prévue le Mardi 2026-04-14 de 10:00 à 11:45",
         "prix": 17,
@@ -59,7 +57,6 @@
         ]
       },
       "properties": {
-        "ordre": 3,
         "name": "Piazza della Minerva",
         "description": "Visite prévue le Mardi 2026-04-14 de 11:45 à 12:00",
         "prix": 0,
