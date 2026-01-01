@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rome 2026 — Visites (GeoJSON)</title>
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #map { height: 100%; width: 100%; }
+
+    /* Numbered circle marker (DivIcon) */
+    .num-marker{
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font: 700 14px/1 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.9);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    }
+    .prio-haute { background: #c62828; }
+    .prio-moyenne { background: #ef6c00; }
+    .prio-basse { background: #2e7d32; }
+    .prio-defaut { background: #0d47a1; }
+
+    /* Popup layout */
+    .popup h3 { margin: 0 0 6px 0; font-size: 16px; }
+    .popup .meta { margin: 0; padding: 0; list-style: none; }
+    .popup .meta li { margin: 2px 0; }
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 999px;
+      font-size: 12px; font-weight: 600; color: #fff; vertical-align: middle;
+    }
+    .badge-haute { background:#c62828; }
+    .badge-moyenne { background:#ef6c00; }
+    .badge-basse { background:#2e7d32; }
+    .badge-defaut { background:#0d47a1; }
+    .muted { color: #555; }
+    .popup a { word-break: break-all; }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script>
+    // ✅ Remplace l’URL ci-dessous si besoin (GitHub Raw recommandé)
+    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-01.geojson";
+
+    const map = L.map('map', { zoomControl: true });
+
+    // Fond de carte (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    function esc(s){
+      return String(s ?? '').replace(/[&<>"']/g, (c)=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+    }
+
+    function prioClass(prio){
+      const p = String(prio ?? '').toLowerCase().trim();
+      if (p === 'haute') return { cls: 'prio-haute', badge: 'badge-haute' };
+      if (p === 'moyenne') return { cls: 'prio-moyenne', badge: 'badge-moyenne' };
+      if (p === 'basse') return { cls: 'prio-basse', badge: 'badge-basse' };
+      return { cls: 'prio-defaut', badge: 'badge-defaut' };
+    }
+
+    function formatBilletRequis(v){
+      if (v === true || String(v).toLowerCase() === 'true') return 'Oui';
+      if (v === false || String(v).toLowerCase() === 'false') return 'Non';
+      return esc(v);
+    }
+
+    function makePopup(props, num){
+      const name = props.name ?? `Visite ${num}`;
+      const date = props.date ?? '';
+      const debut = props.heure_debut ?? '';
+      const fin = props.heure_fin ?? '';
+      const duree = props.duree ?? '';
+      const prix = (props.prix ?? props.price ?? '');
+      const billet = formatBilletRequis(props.billet_requis);
+      const urlBillet = props.url_billet ?? '';
+      const description = props.description ?? '';
+      const priorite = props.priorite ?? '';
+
+      const { badge } = prioClass(priorite);
+
+      const badgeHtml = priorite
+        ? ` <span class="badge ${badge}">${esc(priorite)}</span>`
+        : '';
+
+      const horaire = (debut || fin) ? `${esc(debut)}${(debut && fin) ? ' – ' : ''}${esc(fin)}` : '';
+
+      const lienBillet = urlBillet
+        ? `<li>🎟 <strong>Billet</strong> : <a href="${esc(urlBillet)}" target="_blank" rel="noopener">ouvrir</a></li>`
+        : '';
+
+      const prixTxt = (prix === 0 || prix === "0") ? "0 €" : (prix ? `${esc(prix)} €` : '');
+
+      return `
+        <div class="popup">
+          <h3>${esc(num)}. ${esc(name)}${badgeHtml}</h3>
+          <ul class="meta">
+            ${date ? `<li>📅 <strong>Date</strong> : ${esc(date)}</li>` : ''}
+            ${horaire ? `<li>⏰ <strong>Horaire</strong> : ${horaire}</li>` : ''}
+            ${duree ? `<li>⏱ <strong>Durée</strong> : ${esc(duree)}</li>` : ''}
+            ${prixTxt ? `<li>💶 <strong>Prix</strong> : ${prixTxt}</li>` : ''}
+            ${(props.billet_requis !== undefined && props.billet_requis !== null) ? `<li>✅ <strong>Billet requis</strong> : ${esc(billet)}</li>` : ''}
+            ${lienBillet}
+          </ul>
+          ${description ? `<p class="muted" style="margin:8px 0 0 0;">${esc(description)}</p>` : ''}
+        </div>
+      `;
+    }
+
+    async function loadGeoJson(){
+      const res = await fetch(GEOJSON_URL, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Impossible de charger le GeoJSON (${res.status})`);
+      const gj = await res.json();
+
+      // Numérotation: si props.ordre / props.numero / props.visite existent => on les utilise, sinon index + 1
+      const features = (gj.features ?? []).map((f, i) => {
+        const p = f.properties ?? {};
+        const num = p.ordre ?? p.numero ?? p.visite ?? p.id ?? (i + 1);
+        return { f, num, i };
+      });
+
+      const group = L.featureGroup();
+
+      features.forEach(({ f, num, i }) => {
+        const props = f.properties ?? {};
+        const priorite = props.priorite ?? '';
+        const { cls } = prioClass(priorite);
+
+        // Support Point GeoJSON only (as in your file)
+        const coords = f.geometry && f.geometry.type === 'Point' ? f.geometry.coordinates : null;
+        if (!coords) return;
+        const lng = coords[0], lat = coords[1];
+
+        const icon = L.divIcon({
+          className: '',
+          html: `<div class="num-marker ${cls}">${esc(num)}</div>`,
+          iconSize: [32, 32],
+          iconAnchor: [16, 32],  // anchor bottom middle
+          popupAnchor: [0, -28]
+        });
+
+        const marker = L.marker([lat, lng], { icon });
+        marker.bindPopup(makePopup(props, num), { maxWidth: 320 });
+        marker.addTo(group);
+      });
+
+      group.addTo(map);
+
+      // Zoom sur l'ensemble des points (avec marge)
+      const b = group.getBounds();
+      if (b.isValid()) map.fitBounds(b.pad(0.15));
+      else map.setView([41.9028, 12.4964], 12); // Rome fallback
+    }
+
+    loadGeoJson().catch(err => {
+      console.error(err);
+      alert("Erreur : " + err.message);
+      map.setView([41.9028, 12.4964], 12);
+    });
+  </script>
+</body>
+</html>
