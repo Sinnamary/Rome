@@ -256,12 +256,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          12.473172,
-          41.896923
+          12.498528,
+          41.901417
         ]
       },
       "properties": {
-        "name": "Palazzo Massimo",
+        "name": "Musée National Romain - Palazzo Massimo",
         "description": "Visite prévue le Mardi 2026-04-14 de 17:00 à 19:00",
         "prix": 15,
         "duree": "02:00",
