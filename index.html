@@ -143,31 +143,64 @@
         return { f, num, i };
       });
 
+      // Détecter et gérer les points superposés (mêmes coordonnées)
+      const coordMap = new Map();
+      const offsetFeatures = features.map(function(item) {
+        const f = item.f;
+        const num = item.num;
+        const i = item.i;
+        const coords = f.geometry && f.geometry.type === 'Point' ? f.geometry.coordinates : null;
+        if (!coords) return { f: f, num: num, i: i, lat: null, lng: null };
+        const lng = coords[0];
+        const lat = coords[1];
+        const coordKey = lat.toFixed(6) + ',' + lng.toFixed(6);
+        
+        // Compter combien de points ont ces coordonnées
+        const count = coordMap.get(coordKey) || 0;
+        coordMap.set(coordKey, count + 1);
+        
+        // Si plusieurs points ont les mêmes coordonnées, les décaler légèrement
+        let offsetLat = lat;
+        let offsetLng = lng;
+        if (count > 0) {
+          // Décalage en spirale : chaque point est décalé de ~50m
+          const angle = (count * 60) * (Math.PI / 180); // 60 degrés entre chaque point
+          const offset = 0.0005 * count; // ~50m par niveau
+          offsetLat = lat + offset * Math.cos(angle);
+          offsetLng = lng + offset * Math.sin(angle);
+        }
+        
+        return { f: f, num: num, i: i, lat: offsetLat, lng: offsetLng, originalLat: lat, originalLng: lng };
+      });
+
       const group = L.featureGroup();
 
-      features.forEach(({ f, num, i }) => {
-        const props = f.properties ?? {};
-        const priorite = props.priorite ?? '';
-        const { cls } = prioClass(priorite);
+      offsetFeatures.forEach(function(item) {
+        const f = item.f;
+        const num = item.num;
+        const lat = item.lat;
+        const lng = item.lng;
+        if (lat === null || lng === null) return;
+        
+        const props = f.properties || {};
+        const priorite = props.priorite || '';
+        const prioInfo = prioClass(priorite);
+        const cls = prioInfo.cls;
 
-        // Support Point GeoJSON only (as in your file)
-        const coords = f.geometry && f.geometry.type === 'Point' ? f.geometry.coordinates : null;
-        if (!coords) return;
-        const lng = coords[0], lat = coords[1];
-
+        const iconHtml = '<div class="num-marker ' + cls + '">' + esc(num) + '</div>';
         const icon = L.divIcon({
           className: '',
-          html: `<div class="num-marker ${cls}">${esc(num)}</div>`,
+          html: iconHtml,
           iconSize: [32, 32],
           iconAnchor: [16, 32],  // anchor bottom middle
           popupAnchor: [0, -28]
         });
 
-        const marker = L.marker([lat, lng], { icon });
+        const marker = L.marker([lat, lng], { icon: icon });
         marker.bindPopup(makePopup(props, num), { maxWidth: 320 });
         marker.addTo(group);
       });
-
+      
       // Vérifier spécifiquement le point 2.2 pour s'assurer qu'il est visible
       const marker22 = group.getLayers().find(layer => {
         if (layer instanceof L.Marker) {

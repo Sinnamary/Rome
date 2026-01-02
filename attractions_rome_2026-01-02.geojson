@@ -139,7 +139,7 @@
         "heure_debut": "12:00",
         "heure_fin": "13:00",
         "carte": "",
-        "reservation": false,
+        "reservation": true,
         "url": "https://armandoalpantheon.it/",
         "priorite": "basse",
         "ordre": "2.4"
@@ -599,6 +599,54 @@
         "url": "https://www.domusromane.it/en/tickets/",
         "priorite": "haute",
         "ordre": "5.6"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "Aller en taxi depuis Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Samedi 2026-04-18",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-18",
+        "heure_debut": "",
+        "heure_fin": "",
+        "carte": "",
+        "reservation": true,
+        "url": "",
+        "priorite": "moyenne",
+        "ordre": "6.1"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.2389,
+          41.8003
+        ]
+      },
+      "properties": {
+        "name": "Départ Vol de l'Aéroport Léonard de Vinci-Fiumicino",
+        "description": "Visite prévue le Samedi 2026-04-18",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-18",
+        "heure_debut": "",
+        "heure_fin": "",
+        "carte": "",
+        "reservation": true,
+        "url": "",
+        "priorite": "moyenne",
+        "ordre": "6.2"
       }
     }
   ]
