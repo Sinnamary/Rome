@@ -88,7 +88,8 @@
     class RouteLayerManager {
       constructor(map) {
         this.map = map;
-        this.routeLayers = new Map(); // Map<jour, L.layerGroup>
+        this.routeLayers = new Map(); // Map<jour, L.layerGroup> - Calques de trajets
+        this.pointLayers = new Map(); // Map<jour, L.layerGroup> - Calques de points
         this.dayColors = [
           "#2563eb", // Bleu - Jour 1
           "#16a34a", // Vert - Jour 2
@@ -243,6 +244,76 @@
       }
       
       /**
+       * Crée un marqueur pour un point (réutilise les fonctions du code principal)
+       * Note: Les fonctions esc, prioClass et makePopup doivent être définies dans le scope global
+       */
+      createMarker(feature, lat, lng, order) {
+        const props = feature.properties || {};
+        const priorite = props.priorite || '';
+        
+        // Utiliser les fonctions globales (esc, prioClass, makePopup)
+        // Ces fonctions sont définies dans le code principal avant ce module
+        const prioInfo = prioClass(priorite);
+        const cls = prioInfo.cls;
+        
+        const iconHtml = '<div class="num-marker ' + cls + '">' + esc(order) + '</div>';
+        const icon = L.divIcon({
+          className: '',
+          html: iconHtml,
+          iconSize: [32, 32],
+          iconAnchor: [16, 32],
+          popupAnchor: [0, -28]
+        });
+        
+        const marker = L.marker([lat, lng], { icon: icon });
+        
+        // Utiliser makePopup du code principal
+        marker.bindPopup(makePopup(props, order), { maxWidth: 320 });
+        
+        return marker;
+      }
+      
+      /**
+       * Crée les calques de points par jour
+       */
+      createPointLayers(features) {
+        // Nettoyer les calques existants
+        this.clearPointLayers();
+        
+        // Grouper les points par jour
+        const pointsByDay = this.groupPointsByDay(features);
+        
+        if (pointsByDay.size === 0) {
+          console.log("[ROUTES] Aucun point valide trouvé pour créer les calques de points");
+          return;
+        }
+        
+        // Créer un calque de points pour chaque jour
+        pointsByDay.forEach((points, day) => {
+          const layerGroup = L.layerGroup();
+          
+          // Créer un marqueur pour chaque point
+          points.forEach((point) => {
+            // Trouver la feature correspondante
+            const feature = features[point.index];
+            if (feature) {
+              const marker = this.createMarker(feature, point.lat, point.lon, point.order);
+              marker.addTo(layerGroup);
+            }
+          });
+          
+          // Stocker le calque
+          this.pointLayers.set(day, {
+            layer: layerGroup,
+            day: day,
+            pointCount: points.length
+          });
+        });
+        
+        console.log(`[ROUTES] ${this.pointLayers.size} calque(s) de points créé(s)`);
+      }
+      
+      /**
        * Crée les calques de trajets pour tous les jours
        */
       createRouteLayers(features) {
@@ -284,6 +355,18 @@
       }
       
       /**
+       * Nettoie tous les calques de points existants
+       */
+      clearPointLayers() {
+        this.pointLayers.forEach((pointData, day) => {
+          if (this.map.hasLayer(pointData.layer)) {
+            this.map.removeLayer(pointData.layer);
+          }
+        });
+        this.pointLayers.clear();
+      }
+      
+      /**
        * Nettoie tous les calques de trajets existants
        */
       clearRouteLayers() {
@@ -304,14 +387,19 @@
           this.map.removeControl(this.layerControl);
         }
         
-        // Créer le nouveau contrôleur avec les calques de trajets
+        // Créer les overlays : d'abord les calques de points, puis les calques de trajets
+        const pointOverlays = {};
+        this.pointLayers.forEach((pointData, day) => {
+          pointOverlays[`Points - Jour ${day}`] = pointData.layer;
+        });
+        
         const routeOverlays = {};
         this.routeLayers.forEach((routeData, day) => {
           routeOverlays[`Trajets - Jour ${day}`] = routeData.layer;
         });
         
-        // Fusionner avec les overlays existants
-        const allOverlays = { ...overlayLayers, ...routeOverlays };
+        // Fusionner : points en premier, puis trajets, puis autres overlays
+        const allOverlays = { ...pointOverlays, ...routeOverlays, ...overlayLayers };
         
         this.layerControl = L.control.layers(baseLayers, allOverlays, {
           position: 'topright',
@@ -319,6 +407,28 @@
         });
         
         this.layerControl.addTo(this.map);
+      }
+      
+      /**
+       * Active tous les calques de points
+       */
+      showAllPoints() {
+        this.pointLayers.forEach((pointData, day) => {
+          if (!this.map.hasLayer(pointData.layer)) {
+            pointData.layer.addTo(this.map);
+          }
+        });
+      }
+      
+      /**
+       * Désactive tous les calques de points
+       */
+      hideAllPoints() {
+        this.pointLayers.forEach((pointData, day) => {
+          if (this.map.hasLayer(pointData.layer)) {
+            this.map.removeLayer(pointData.layer);
+          }
+        });
       }
       
       /**
@@ -358,30 +468,62 @@
       return routeManager;
     }
     
-    /**
-     * Traite les features GeoJSON pour créer les trajets
-     */
-    function processRoutes(features) {
-      // Initialiser le gestionnaire si nécessaire
-      if (!routeManager) {
-        if (typeof map !== 'undefined') {
-          routeManager = initRouteManager(map);
-        } else {
-          console.warn("[ROUTES] La carte n'est pas encore initialisée");
-          return;
+      /**
+       * Traite les features GeoJSON pour créer les trajets
+       */
+      function processRoutes(features) {
+        // Initialiser le gestionnaire si nécessaire
+        if (!routeManager) {
+          if (typeof map !== 'undefined') {
+            routeManager = initRouteManager(map);
+          } else {
+            console.warn("[ROUTES] La carte n'est pas encore initialisée");
+            return;
+          }
         }
+        
+        // Supprimer les marqueurs originaux créés par processGeoJSON
+        // Les marqueurs seront affichés via les calques de points par jour
+        // Chercher tous les FeatureGroup qui contiennent des marqueurs
+        const layersToRemove = [];
+        map.eachLayer((layer) => {
+          if (layer instanceof L.FeatureGroup) {
+            // Vérifier si c'est un groupe de marqueurs (contient au moins un marqueur)
+            const layers = layer.getLayers();
+            const hasMarkers = layers.some(l => l instanceof L.Marker);
+            if (hasMarkers) {
+              layersToRemove.push(layer);
+            }
+          } else if (layer instanceof L.Marker) {
+            // Marqueur individuel (ne devrait pas arriver normalement)
+            layersToRemove.push(layer);
+          }
+        });
+        
+        // Supprimer tous les groupes et marqueurs trouvés
+        layersToRemove.forEach((layer) => {
+          map.removeLayer(layer);
+        });
+        
+        console.log(`[ROUTES] ${layersToRemove.length} groupe(s) de marqueurs supprimé(s)`);
+        
+        // Créer les calques de points par jour
+        routeManager.createPointLayers(features);
+        
+        // Créer les calques de trajets
+        routeManager.createRouteLayers(features);
+        
+        // Ajouter le contrôleur de calques
+        const baseLayers = {};
+        const overlayLayers = {};
+        routeManager.addLayerControl(baseLayers, overlayLayers);
+        
+        // Activer tous les calques de points par défaut (pour la visualisation)
+        routeManager.showAllPoints();
+        
+        // Les calques de trajets sont créés mais non activés par défaut
+        // L'utilisateur peut les activer via le contrôleur de calques
       }
-      
-      routeManager.createRouteLayers(features);
-      
-      // Ajouter le contrôleur de calques
-      const baseLayers = {};
-      const overlayLayers = {};
-      routeManager.addLayerControl(baseLayers, overlayLayers);
-      
-      // Les calques sont créés mais non activés par défaut
-      // L'utilisateur peut les activer via le contrôleur de calques
-    }
     
     // ============================================================
     // FIN DU MODULE ROUTES
