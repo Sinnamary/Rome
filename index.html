@@ -45,12 +45,368 @@
     .badge-defaut { background:#0d47a1; }
     .muted { color: #555; }
     .popup a { word-break: break-all; }
+    /* Styles pour les lignes de trajet */
+    .route-line {
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    
+    .route-line:hover {
+      opacity: 1 !important;
+      stroke-width: 5 !important;
+    }
+    
+    /* Styles pour le contrôleur de calques */
+    .leaflet-control-layers {
+      background: white;
+      border-radius: 4px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    }
+    
+    .leaflet-control-layers-overlays label {
+      display: block;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+    
+    .leaflet-control-layers-overlays label:hover {
+      background-color: #f0f0f0;
+    }
+
   </style>
 </head>
 <body>
   <div id="map"></div>
 
   <script>
+    // ============================================================
+    // MODULE ROUTES - Gestion des calques de trajets
+    // ============================================================
+    // Ce code est complètement indépendant du code principal
+    // Il gère uniquement l'affichage des trajets entre les points
+    
+    class RouteLayerManager {
+      constructor(map) {
+        this.map = map;
+        this.routeLayers = new Map(); // Map<jour, L.layerGroup>
+        this.dayColors = [
+          "#2563eb", // Bleu - Jour 1
+          "#16a34a", // Vert - Jour 2
+          "#ea580c", // Orange - Jour 3
+          "#9333ea", // Violet - Jour 4
+          "#dc2626", // Rouge - Jour 5
+          "#0891b2", // Cyan - Jour 6
+          "#ca8a04", // Jaune - Jour 7
+        ];
+        this.layerControl = null;
+      }
+      
+      /**
+       * Parse le numéro d'ordre pour extraire le jour
+       * Format attendu : "J.N" (ex: "1.1", "2.3", "3.1")
+       */
+      parseDayFromOrder(orderStr) {
+        if (!orderStr || typeof orderStr !== 'string') return null;
+        const match = orderStr.match(/^(\d+)\./);
+        return match ? parseInt(match[1], 10) : null;
+      }
+      
+      /**
+       * Parse le numéro d'ordre pour extraire le numéro de visite
+       * Format attendu : "J.N" (ex: "1.1", "2.3", "3.1")
+       */
+      parseVisitFromOrder(orderStr) {
+        if (!orderStr || typeof orderStr !== 'string') return null;
+        const match = orderStr.match(/\.(\d+)$/);
+        return match ? parseInt(match[1], 10) : null;
+      }
+      
+      /**
+       * Calcule la distance en mètres entre deux points (formule de Haversine)
+       */
+      calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371000; // Rayon de la Terre en mètres
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = 
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+          Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return R * c;
+      }
+      
+      /**
+       * Formate la distance pour l'affichage
+       */
+      formatDistance(meters) {
+        if (meters < 1000) {
+          return Math.round(meters) + " m";
+        }
+        return (meters / 1000).toFixed(2) + " km";
+      }
+      
+      /**
+       * Crée une polyligne entre deux points avec des informations
+       */
+      createRouteLine(point1, point2, color) {
+        const lat1 = point1.lat;
+        const lon1 = point1.lon;
+        const lat2 = point2.lat;
+        const lon2 = point2.lon;
+        
+        const distance = this.calculateDistance(lat1, lon1, lat2, lon2);
+        const distanceText = this.formatDistance(distance);
+        
+        // Récupérer le temps de trajet depuis le point d'arrivée (point2)
+        // Le temps de trajet est associé au point d'arrivée dans le tableau Excel
+        const tempsTrajet = point2.temps_trajet || '';
+        const tempsTrajetText = tempsTrajet ? `Temps: ${tempsTrajet}` : '';
+        
+        // Créer la polyligne
+        const polyline = L.polyline(
+          [[lat1, lon1], [lat2, lon2]],
+          {
+            color: color,
+            weight: 4,
+            opacity: 0.7,
+            dashArray: '10, 5',
+            className: 'route-line'
+          }
+        );
+        
+        // Construire le contenu du popup
+        let popupLines = [
+          `<strong>${point1.order} → ${point2.order}</strong>`,
+          `<span style="color: #666;">Distance: ${distanceText}</span>`
+        ];
+        
+        if (tempsTrajetText) {
+          popupLines.push(`<span style="color: #666;">${tempsTrajetText}</span>`);
+        }
+        
+        // Ajouter un popup avec les informations
+        const popupContent = `
+          <div style="text-align: center;">
+            ${popupLines.join('<br>')}
+          </div>
+        `;
+        polyline.bindPopup(popupContent);
+        
+        return polyline;
+      }
+      
+      /**
+       * Groupe les points par jour et trie par ordre de visite
+       */
+      groupPointsByDay(features) {
+        const pointsByDay = new Map();
+        
+        features.forEach((feature, index) => {
+          const props = feature.properties || {};
+          const order = String(props.ordre || props.numero || props.visite || (index + 1));
+          const day = this.parseDayFromOrder(order);
+          
+          if (day === null) return; // Ignorer si pas de jour valide
+          
+          const coords = feature.geometry && feature.geometry.coordinates;
+          if (!coords || coords.length < 2) return;
+          
+          const point = {
+            order: order,
+            day: day,
+            visit: this.parseVisitFromOrder(order),
+            lat: coords[1],
+            lon: coords[0],
+            name: props.name || `Point ${order}`,
+            temps_trajet: props.temps_trajet || '',
+            index: index
+          };
+          
+          if (!pointsByDay.has(day)) {
+            pointsByDay.set(day, []);
+          }
+          pointsByDay.get(day).push(point);
+        });
+        
+        // Trier les points de chaque jour par numéro de visite
+        pointsByDay.forEach((points, day) => {
+          points.sort((a, b) => {
+            if (a.visit === null && b.visit === null) return 0;
+            if (a.visit === null) return 1;
+            if (b.visit === null) return -1;
+            return a.visit - b.visit;
+          });
+        });
+        
+        return pointsByDay;
+      }
+      
+      /**
+       * Crée les calques de trajets pour tous les jours
+       */
+      createRouteLayers(features) {
+        // Nettoyer les calques existants
+        this.clearRouteLayers();
+        
+        // Grouper les points par jour
+        const pointsByDay = this.groupPointsByDay(features);
+        
+        if (pointsByDay.size === 0) {
+          console.log("[ROUTES] Aucun point valide trouvé pour créer les trajets");
+          return;
+        }
+        
+        // Créer un calque pour chaque jour
+        pointsByDay.forEach((points, day) => {
+          const color = this.dayColors[(day - 1) % this.dayColors.length];
+          const layerGroup = L.layerGroup();
+          
+          // Tracer les lignes entre les points consécutifs
+          for (let i = 0; i < points.length - 1; i++) {
+            const point1 = points[i];
+            const point2 = points[i + 1];
+            
+            const routeLine = this.createRouteLine(point1, point2, color);
+            routeLine.addTo(layerGroup);
+          }
+          
+          // Stocker le calque
+          this.routeLayers.set(day, {
+            layer: layerGroup,
+            color: color,
+            day: day,
+            pointCount: points.length
+          });
+        });
+        
+        console.log(`[ROUTES] ${this.routeLayers.size} calque(s) de trajet créé(s)`);
+      }
+      
+      /**
+       * Nettoie tous les calques de trajets existants
+       */
+      clearRouteLayers() {
+        this.routeLayers.forEach((routeData, day) => {
+          if (this.map.hasLayer(routeData.layer)) {
+            this.map.removeLayer(routeData.layer);
+          }
+        });
+        this.routeLayers.clear();
+      }
+      
+      /**
+       * Ajoute le contrôleur de calques à la carte
+       */
+      addLayerControl(baseLayers, overlayLayers) {
+        // Supprimer l'ancien contrôleur s'il existe
+        if (this.layerControl) {
+          this.map.removeControl(this.layerControl);
+        }
+        
+        // Créer le nouveau contrôleur avec les calques de trajets
+        const routeOverlays = {};
+        this.routeLayers.forEach((routeData, day) => {
+          routeOverlays[`Trajets - Jour ${day}`] = routeData.layer;
+        });
+        
+        // Fusionner avec les overlays existants
+        const allOverlays = { ...overlayLayers, ...routeOverlays };
+        
+        this.layerControl = L.control.layers(baseLayers, allOverlays, {
+          position: 'topright',
+          collapsed: true
+        });
+        
+        this.layerControl.addTo(this.map);
+      }
+      
+      /**
+       * Active tous les calques de trajets
+       */
+      showAllRoutes() {
+        this.routeLayers.forEach((routeData, day) => {
+          if (!this.map.hasLayer(routeData.layer)) {
+            routeData.layer.addTo(this.map);
+          }
+        });
+      }
+      
+      /**
+       * Désactive tous les calques de trajets
+       */
+      hideAllRoutes() {
+        this.routeLayers.forEach((routeData, day) => {
+          if (this.map.hasLayer(routeData.layer)) {
+            this.map.removeLayer(routeData.layer);
+          }
+        });
+      }
+    }
+    
+    // Variable globale pour le gestionnaire de routes
+    let routeManager = null;
+    
+    /**
+     * Initialise le gestionnaire de routes
+     */
+    function initRouteManager(map) {
+      if (!routeManager) {
+        routeManager = new RouteLayerManager(map);
+        console.log("[ROUTES] Gestionnaire de routes initialisé");
+      }
+      return routeManager;
+    }
+    
+    /**
+     * Traite les features GeoJSON pour créer les trajets
+     */
+    function processRoutes(features) {
+      // Initialiser le gestionnaire si nécessaire
+      if (!routeManager) {
+        if (typeof map !== 'undefined') {
+          routeManager = initRouteManager(map);
+        } else {
+          console.warn("[ROUTES] La carte n'est pas encore initialisée");
+          return;
+        }
+      }
+      
+      routeManager.createRouteLayers(features);
+      
+      // Ajouter le contrôleur de calques
+      const baseLayers = {};
+      const overlayLayers = {};
+      routeManager.addLayerControl(baseLayers, overlayLayers);
+      
+      // Les calques sont créés mais non activés par défaut
+      // L'utilisateur peut les activer via le contrôleur de calques
+    }
+    
+    // ============================================================
+    // FIN DU MODULE ROUTES
+    // ============================================================
+
+    // Intégration des routes dans le processus principal
+    // Appeler cette fonction après avoir chargé et traité le GeoJSON
+    
+    function integrateRoutes(features) {
+      // S'assurer que la carte est initialisée
+      if (typeof map === 'undefined') {
+        console.warn("[ROUTES] La carte n'est pas encore initialisée, attente...");
+        setTimeout(() => integrateRoutes(features), 100);
+        return;
+      }
+      
+      // Initialiser le gestionnaire si nécessaire
+      if (!routeManager) {
+        routeManager = initRouteManager(map);
+      }
+      
+      processRoutes(features);
+    }
+
+
     // ✅ URL du fichier GeoJSON sur GitHub
     const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-02.geojson";
 
@@ -132,6 +488,29 @@
       if (!res.ok) throw new Error(`Impossible de charger le GeoJSON (${res.status})`);
       const gj = await res.json();
       processGeoJSON(gj);
+    // Intégration des routes dans le processus principal
+    // Appeler cette fonction après avoir chargé et traité le GeoJSON
+    
+    function integrateRoutes(features) {
+      // S'assurer que la carte est initialisée
+      if (typeof map === 'undefined') {
+        console.warn("[ROUTES] La carte n'est pas encore initialisée, attente...");
+        setTimeout(() => integrateRoutes(features), 100);
+        return;
+      }
+      
+      // Initialiser le gestionnaire si nécessaire
+      if (!routeManager) {
+        routeManager = initRouteManager(map);
+      }
+      
+      processRoutes(features);
+    }
+
+      // Intégrer les routes après traitement du GeoJSON
+      if (typeof integrateRoutes === 'function') {
+        integrateRoutes(gj.features || []);
+      }
     }
     
     function processGeoJSON(gj) {
