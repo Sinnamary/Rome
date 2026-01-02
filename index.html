@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rome 2026 — Visites (GeoJSON)</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
   <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -73,7 +74,7 @@
       return { cls: 'prio-defaut', badge: 'badge-defaut' };
     }
 
-    function formatBilletRequis(v){
+    function formatReservation(v){
       if (v === true || String(v).toLowerCase() === 'true') return 'Oui';
       if (v === false || String(v).toLowerCase() === 'false') return 'Non';
       return esc(v);
@@ -86,21 +87,26 @@
       const fin = props.heure_fin ?? '';
       const duree = props.duree ?? '';
       const prix = (props.prix ?? props.price ?? '');
-      const billet = formatBilletRequis(props.billet_requis);
-      const urlBillet = props.url_billet ?? '';
+      const reservation = formatReservation(props.reservation);
+      const url = props.url ?? '';
       const description = props.description ?? '';
       const priorite = props.priorite ?? '';
 
       const { badge } = prioClass(priorite);
 
+      // Capitaliser la première lettre pour l'affichage
+      const prioriteDisplay = priorite 
+        ? priorite.charAt(0).toUpperCase() + priorite.slice(1).toLowerCase()
+        : '';
+
       const badgeHtml = priorite
-        ? ` <span class="badge ${badge}">${esc(priorite)}</span>`
+        ? ` <span class="badge ${badge}">${esc(prioriteDisplay)}</span>`
         : '';
 
       const horaire = (debut || fin) ? `${esc(debut)}${(debut && fin) ? ' – ' : ''}${esc(fin)}` : '';
 
-      const lienBillet = urlBillet
-        ? `<li>🎟 <strong>Billet</strong> : <a href="${esc(urlBillet)}" target="_blank" rel="noopener">ouvrir</a></li>`
+      const lienUrl = url
+        ? `<li>🔗 <strong>Lien</strong> : <a href="${esc(url)}" target="_blank" rel="noopener">ouvrir</a></li>`
         : '';
 
       const prixTxt = (prix === 0 || prix === "0") ? "0 €" : (prix ? `${esc(prix)} €` : '');
@@ -113,8 +119,8 @@
             ${horaire ? `<li>⏰ <strong>Horaire</strong> : ${esc(horaire)}</li>` : ''}
             ${duree ? `<li>⏱ <strong>Durée</strong> : ${esc(duree)}</li>` : ''}
             ${prixTxt ? `<li>💶 <strong>Prix</strong> : ${prixTxt}</li>` : ''}
-            ${(props.billet_requis !== undefined && props.billet_requis !== null) ? `<li>✅ <strong>Billet requis</strong> : ${esc(billet)}</li>` : ''}
-            ${lienBillet}
+            ${(props.reservation !== undefined && props.reservation !== null) ? `<li>📞 <strong>Réservation</strong> : ${esc(reservation)}</li>` : ''}
+            ${lienUrl}
           </ul>
           ${description ? `<p class="muted" style="margin:8px 0 0 0;">${esc(description)}</p>` : ''}
         </div>
