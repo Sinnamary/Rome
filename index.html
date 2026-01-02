@@ -50,8 +50,8 @@
   <div id="map"></div>
 
   <script>
-    // ✅ Remplace l’URL ci-dessous si besoin (GitHub Raw recommandé)
-    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-01.geojson";
+    // ✅ URL du fichier GeoJSON sur GitHub
+    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-02.geojson";
 
     const map = L.map('map', { zoomControl: true });
 
@@ -110,7 +110,7 @@
           <h3>${esc(num)}. ${esc(name)}${badgeHtml}</h3>
           <ul class="meta">
             ${date ? `<li>📅 <strong>Date</strong> : ${esc(date)}</li>` : ''}
-            ${horaire ? `<li>⏰ <strong>Horaire</strong> : ${horaire}</li>` : ''}
+            ${horaire ? `<li>⏰ <strong>Horaire</strong> : ${esc(horaire)}</li>` : ''}
             ${duree ? `<li>⏱ <strong>Durée</strong> : ${esc(duree)}</li>` : ''}
             ${prixTxt ? `<li>💶 <strong>Prix</strong> : ${prixTxt}</li>` : ''}
             ${(props.billet_requis !== undefined && props.billet_requis !== null) ? `<li>✅ <strong>Billet requis</strong> : ${esc(billet)}</li>` : ''}
@@ -129,7 +129,8 @@
       // Numérotation: si props.ordre / props.numero / props.visite existent => on les utilise, sinon index + 1
       const features = (gj.features ?? []).map((f, i) => {
         const p = f.properties ?? {};
-        const num = p.ordre ?? p.numero ?? p.visite ?? p.id ?? (i + 1);
+        // Convertir en chaîne pour garantir la cohérence
+        const num = String(p.ordre ?? p.numero ?? p.visite ?? p.id ?? (i + 1));
         return { f, num, i };
       });
 
