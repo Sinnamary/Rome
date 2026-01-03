@@ -593,7 +593,7 @@
         "temps_trajet": "10 min",
         "carte": "",
         "reservation": true,
-        "url": "https://colosseum.tickets-rome.com/fr/?ci=2&cm=555637096_1311718611955935_c_o_colis%C3%A9e%20romain_e_{extensionid}&campaign=Rome-Colosseum-French-France-Search-All-All-cid220&campaignid=555637096&adgroupid=1311718611955935&keyword=colis%C3%A9e%20romain&device=c&msclkid=9f3b62927ff11fb2025f0bca9889f8a5&utm_source=bing&utm_medium=cpc&utm_campaign=Rome%20-%20Colosseum%20-%20French%20-%20All%20-%20Search%20-%20All%20-%20All%20-%20cid220&utm_term=colis%C3%A9e%20romain&utm_content=Generic%20-%20Exact%20-%20French%20-%20Colosseum",
+        "url": "https://www.tickets-rome.com/fr/colosseum/plan-your-visit-colosseum/",
         "priorite": "moyenne",
         "ordre": "5.4",
         "commentaire": ""
@@ -619,7 +619,7 @@
         "temps_trajet": "1 min",
         "carte": "",
         "reservation": true,
-        "url": "https://www.tiqets.com/fr/billets-forum-romain-l146049/?utm_account=154002408&utm_source=bing&utm_medium=cpc&utm_campaign=710432113&utm_content=1251245548423528&msclkid=c4b9a12ff80718bc4ea9c8771fc91e8a&utm_term=forum+romain",
+        "url": "https://www.tiqets.com/fr/billets-forum-romain-l146049/",
         "priorite": "moyenne",
         "ordre": "5.5",
         "commentaire": ""

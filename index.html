@@ -666,22 +666,6 @@
         marker.addTo(group);
       });
       
-      // Vérifier spécifiquement le point 2.2 pour s'assurer qu'il est visible
-      const marker22 = group.getLayers().find(layer => {
-        if (layer instanceof L.Marker) {
-          const popup = layer.getPopup();
-          if (popup) {
-            const content = popup.getContent();
-            return content && content.includes('2.2');
-          }
-        }
-        return false;
-      });
-      
-      if (marker22) {
-        // Forcer le point 2.2 à être visible
-        marker22.setZIndexOffset(1000);
-      }
 
       group.addTo(map);
 
@@ -690,14 +674,16 @@
       if (b.isValid()) {
         map.fitBounds(b.pad(0.15));
         
-        // Vérifier si le point 2.2 est dans les bounds
-        if (marker22) {
-          const bounds22 = L.latLngBounds([marker22.getLatLng()]);
-          const isVisible = b.contains(bounds22);
-          if (!isVisible) {
-            // Centrer la carte sur le point 2.2 si nécessaire
-            map.setView(marker22.getLatLng(), 15);
-          }
+        // Vérifier la visibilité des points prioritaires après le zoom
+        if (typeof priorityMarkers !== 'undefined' && priorityMarkers.length > 0) {
+          priorityMarkers.forEach(function(marker) {
+            const markerBounds = L.latLngBounds([marker.getLatLng()]);
+            const isVisible = b.contains(markerBounds);
+            if (!isVisible) {
+              // Centrer la carte sur le point prioritaire si nécessaire
+              map.setView(marker.getLatLng(), 15);
+            }
+          });
         }
       } else {
         map.setView([41.9028, 12.4964], 12); // Rome fallback
