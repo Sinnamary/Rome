@@ -654,6 +654,7 @@
       const reservation = formatReservation(props.reservation);
       const url = props.url ?? '';
       const description = props.description ?? '';
+      const commentaire = props.commentaire ?? '';
       const priorite = props.priorite ?? '';
 
       const { badge } = prioClass(priorite);
@@ -671,6 +672,10 @@
 
       const lienUrl = url
         ? `<li>🔗 <strong>Lien</strong> : <a href="${esc(url)}" target="_blank" rel="noopener">ouvrir</a></li>`
+        : '';
+
+      const commentaireHtml = commentaire
+        ? `<li>💬 <strong>Commentaire</strong> : ${esc(commentaire)}</li>`
         : '';
 
       const prixTxt = (prix === 0 || prix === "0") ? "0 €" : (prix ? `${esc(prix)} €` : '');
@@ -703,6 +708,7 @@
             ${prixTxt ? `<li>💶 <strong>Prix</strong> : ${prixTxt}</li>` : ''}
             ${(props.reservation !== undefined && props.reservation !== null) ? `<li>📞 <strong>Réservation</strong> : ${esc(reservation)}</li>` : ''}
             ${lienUrl}
+            ${commentaireHtml}
           </ul>
           ${visitePrevue ? `<p class="muted" style="margin:8px 0 0 0;">${esc(visitePrevue)}</p>` : (description ? `<p class="muted" style="margin:8px 0 0 0;">${esc(description)}</p>` : '')}
         </div>

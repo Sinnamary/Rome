@@ -13,7 +13,7 @@
       "properties": {
         "name": "Aéroport Léonard de Vinci-Fiumicino",
         "description": "Visite prévue le Lundi 2026-04-13",
-        "prix": 0,
+        "prix": 85,
         "duree": "",
         "date": "2026-04-13",
         "heure_debut": "",
@@ -21,9 +21,10 @@
         "temps_trajet": "",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://wwws.airfrance.fr/",
         "priorite": "moyenne",
-        "ordre": "1.1"
+        "ordre": "1.1",
+        "commentaire": "Un taxi est prévu par notre hôte"
       }
     },
     {
@@ -38,7 +39,7 @@
       "properties": {
         "name": "Hébergement Via in Arcione 98, Trevi, 00187 Rome, Italie",
         "description": "Visite prévue le Lundi 2026-04-13",
-        "prix": 85,
+        "prix": 0,
         "duree": "",
         "date": "2026-04-13",
         "heure_debut": "",
@@ -48,7 +49,8 @@
         "reservation": true,
         "url": "",
         "priorite": "moyenne",
-        "ordre": "1.2"
+        "ordre": "1.2",
+        "commentaire": ""
       }
     },
     {
@@ -73,7 +75,8 @@
         "reservation": false,
         "url": "https://www.partir-a-rome.com/visites-incontournables/fontaine-trevi",
         "priorite": "moyenne",
-        "ordre": "2.1"
+        "ordre": "2.1",
+        "commentaire": ""
       }
     },
     {
@@ -98,7 +101,8 @@
         "reservation": true,
         "url": "https://ticketroma.doriapamphilj.it/en/biglietteria/gallery-ticket/",
         "priorite": "haute",
-        "ordre": "2.2"
+        "ordre": "2.2",
+        "commentaire": ""
       }
     },
     {
@@ -123,7 +127,8 @@
         "reservation": false,
         "url": "https://www.cityzeum.com/la-place-de-la-minerve",
         "priorite": "moyenne",
-        "ordre": "2.3"
+        "ordre": "2.3",
+        "commentaire": ""
       }
     },
     {
@@ -148,7 +153,8 @@
         "reservation": true,
         "url": "https://armandoalpantheon.it/",
         "priorite": "basse",
-        "ordre": "2.4"
+        "ordre": "2.4",
+        "commentaire": "Restaurant  Salita de' Crescenzi, 31, 00186 Roma RM"
       }
     },
     {
@@ -171,9 +177,10 @@
         "temps_trajet": "",
         "carte": "Roma",
         "reservation": true,
-        "url": "https://portale.museiitaliani.it/b2c/buyTicketless/33f77159-0acd-40c4-8524-701f33aae108",
+        "url": "https://portale.museiitaliani.it",
         "priorite": "haute",
-        "ordre": "2.5"
+        "ordre": "2.5",
+        "commentaire": ""
       }
     },
     {
@@ -198,7 +205,8 @@
         "reservation": false,
         "url": "https://www.turismoroma.it/fr/places/%C3%A9glise-saint-louis-des-fran%C3%A7ais",
         "priorite": "moyenne",
-        "ordre": "2.6"
+        "ordre": "2.6",
+        "commentaire": ""
       }
     },
     {
@@ -223,7 +231,8 @@
         "reservation": false,
         "url": "https://bonjourrome.fr/piazza-navona-rome/",
         "priorite": "moyenne",
-        "ordre": "2.7"
+        "ordre": "2.7",
+        "commentaire": ""
       }
     },
     {
@@ -248,7 +257,8 @@
         "reservation": false,
         "url": "https://romesite.fr/sainte-marie-majeure.html",
         "priorite": "moyenne",
-        "ordre": "2.8"
+        "ordre": "2.8",
+        "commentaire": ""
       }
     },
     {
@@ -273,7 +283,8 @@
         "reservation": true,
         "url": "https://museonazionaleromano.beniculturali.it/en/opening-hours-and-tickets/",
         "priorite": "haute",
-        "ordre": "2.9"
+        "ordre": "2.9",
+        "commentaire": ""
       }
     },
     {
@@ -298,7 +309,8 @@
         "reservation": false,
         "url": "https://centresocialhenrimatisse.fr/pont-saint-ange-rome/",
         "priorite": "moyenne",
-        "ordre": "3.1"
+        "ordre": "3.1",
+        "commentaire": ""
       }
     },
     {
@@ -321,9 +333,10 @@
         "temps_trajet": "15 min",
         "carte": "Omnia",
         "reservation": true,
-        "url": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita.html",
+        "url": "https://www.museivaticani.va/content/museivaticani/fr.html",
         "priorite": "haute",
-        "ordre": "3.2"
+        "ordre": "3.2",
+        "commentaire": "Avec visite Dôme"
       }
     },
     {
@@ -346,9 +359,10 @@
         "temps_trajet": "intérieur",
         "carte": "Omnia",
         "reservation": true,
-        "url": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita.html",
+        "url": "https://www.museivaticani.va/content/museivaticani/fr.html",
         "priorite": "haute",
-        "ordre": "3.3"
+        "ordre": "3.3",
+        "commentaire": ""
       }
     },
     {
@@ -371,9 +385,10 @@
         "temps_trajet": "intérieur",
         "carte": "Omnia",
         "reservation": true,
-        "url": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita.html",
+        "url": "https://www.museivaticani.va/content/museivaticani/fr.html",
         "priorite": "haute",
-        "ordre": "3.4"
+        "ordre": "3.4",
+        "commentaire": ""
       }
     },
     {
@@ -396,9 +411,10 @@
         "temps_trajet": "",
         "carte": "Omnia",
         "reservation": true,
-        "url": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita.html",
+        "url": "https://www.museivaticani.va/content/museivaticani/fr.html",
         "priorite": "haute",
-        "ordre": "3.6"
+        "ordre": "3.6",
+        "commentaire": ""
       }
     },
     {
@@ -423,7 +439,8 @@
         "reservation": true,
         "url": "https://www.ticketone.it/en/artist/galleria-borghese/",
         "priorite": "haute",
-        "ordre": "4.1"
+        "ordre": "4.1",
+        "commentaire": ""
       }
     },
     {
@@ -448,7 +465,8 @@
         "reservation": true,
         "url": "https://museoetru.it/en/visiting/tickets/",
         "priorite": "haute",
-        "ordre": "4.2"
+        "ordre": "4.2",
+        "commentaire": ""
       }
     },
     {
@@ -473,7 +491,8 @@
         "reservation": false,
         "url": "https://www.walksinsiderome.com/fr/tour-attractions/altare-della-patria/",
         "priorite": "moyenne",
-        "ordre": "4.4"
+        "ordre": "4.4",
+        "commentaire": ""
       }
     },
     {
@@ -498,7 +517,8 @@
         "reservation": true,
         "url": "https://www.museicapitolini.org/en/info/biglietti",
         "priorite": "haute",
-        "ordre": "4.5"
+        "ordre": "4.5",
+        "commentaire": ""
       }
     },
     {
@@ -521,9 +541,10 @@
         "temps_trajet": "",
         "carte": "Aucune",
         "reservation": true,
-        "url": "https://www.palazzocolonna.it/en/visit/",
+        "url": "https://www.fondazionepalazzocolonna.it/fr/",
         "priorite": "haute",
-        "ordre": "5.1"
+        "ordre": "5.1",
+        "commentaire": ""
       }
     },
     {
@@ -548,7 +569,8 @@
         "reservation": false,
         "url": "https://www.archeoroma.fr/sites/circus-maximus/",
         "priorite": "moyenne",
-        "ordre": "5.2"
+        "ordre": "5.2",
+        "commentaire": ""
       }
     },
     {
@@ -573,7 +595,8 @@
         "reservation": true,
         "url": "https://colosseum.tickets-rome.com/fr/?ci=2&cm=555637096_1311718611955935_c_o_colis%C3%A9e%20romain_e_{extensionid}&campaign=Rome-Colosseum-French-France-Search-All-All-cid220&campaignid=555637096&adgroupid=1311718611955935&keyword=colis%C3%A9e%20romain&device=c&msclkid=9f3b62927ff11fb2025f0bca9889f8a5&utm_source=bing&utm_medium=cpc&utm_campaign=Rome%20-%20Colosseum%20-%20French%20-%20All%20-%20Search%20-%20All%20-%20All%20-%20cid220&utm_term=colis%C3%A9e%20romain&utm_content=Generic%20-%20Exact%20-%20French%20-%20Colosseum",
         "priorite": "moyenne",
-        "ordre": "5.4"
+        "ordre": "5.4",
+        "commentaire": ""
       }
     },
     {
@@ -598,7 +621,8 @@
         "reservation": true,
         "url": "https://www.tiqets.com/fr/billets-forum-romain-l146049/?utm_account=154002408&utm_source=bing&utm_medium=cpc&utm_campaign=710432113&utm_content=1251245548423528&msclkid=c4b9a12ff80718bc4ea9c8771fc91e8a&utm_term=forum+romain",
         "priorite": "moyenne",
-        "ordre": "5.5"
+        "ordre": "5.5",
+        "commentaire": ""
       }
     },
     {
@@ -623,7 +647,8 @@
         "reservation": false,
         "url": "https://colosseo-roma.it/fr/explorer/arc-constantinois/",
         "priorite": "moyenne",
-        "ordre": "5.6"
+        "ordre": "5.6",
+        "commentaire": ""
       }
     },
     {
@@ -646,9 +671,10 @@
         "temps_trajet": "",
         "carte": "Roma",
         "reservation": true,
-        "url": "https://www.domusromane.it/en/tickets/",
+        "url": "https://www.rome-roma.net/domus-romane-du-palazzo-valentini/",
         "priorite": "haute",
-        "ordre": "5.7"
+        "ordre": "5.7",
+        "commentaire": ""
       }
     }
   ]
