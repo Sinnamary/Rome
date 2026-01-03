@@ -550,7 +550,7 @@
 
 
     // ✅ URL du fichier GeoJSON sur GitHub
-    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-02.geojson";
+    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-03.geojson";
 
     const map = L.map('map', { zoomControl: true });
 
@@ -578,9 +578,75 @@
       return esc(v);
     }
 
+    function formatDateFrench(dateStr){
+      if (!dateStr) return '';
+      // Convertir YYYY-MM-DD en DD/MM/YYYY
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        return parts[2] + '/' + parts[1] + '/' + parts[0];
+      }
+      return dateStr;
+    }
+
+    function formatDateFullFrench(dateStr, jourStr){
+      if (!dateStr) return '';
+      
+      const joursSemaine = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+      const mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+      
+      try {
+        const parts = dateStr.split('-');
+        if (parts.length === 3) {
+          const year = parseInt(parts[0], 10);
+          const month = parseInt(parts[1], 10) - 1; // 0-indexed
+          const day = parseInt(parts[2], 10);
+          
+          const date = new Date(year, month, day);
+          const jourIndex = date.getDay();
+          const jourNom = joursSemaine[jourIndex];
+          const moisNom = mois[month];
+          
+          return jourNom + ' ' + day + ' ' + moisNom + ' ' + year;
+        }
+      } catch (e) {
+        // En cas d'erreur, utiliser le format simple
+        if (jourStr) {
+          const parts = dateStr.split('-');
+          if (parts.length === 3) {
+            const mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+            const month = parseInt(parts[1], 10) - 1;
+            return jourStr + ' ' + parts[2] + ' ' + mois[month] + ' ' + parts[0];
+          }
+        }
+      }
+      return dateStr;
+    }
+
+    function formatDureeMinutes(dureeStr){
+      if (!dureeStr) return '';
+      
+      try {
+        // Format attendu : "H:MM" ou "HH:MM" (ex: "0:45", "2:00", "1:30")
+        const parts = String(dureeStr).split(':');
+        if (parts.length >= 2) {
+          const hours = parseInt(parts[0], 10) || 0;
+          const minutes = parseInt(parts[1], 10) || 0;
+          const totalMinutes = hours * 60 + minutes;
+          
+          if (totalMinutes === 0) return '';
+          if (totalMinutes === 1) return '1 minute';
+          return totalMinutes + ' minutes';
+        }
+      } catch (e) {
+        // En cas d'erreur, retourner la valeur originale
+      }
+      return dureeStr;
+    }
+
     function makePopup(props, num){
       const name = props.name ?? `Visite ${num}`;
       const date = props.date ?? '';
+      const jour = props.jour ?? '';
       const debut = props.heure_debut ?? '';
       const fin = props.heure_fin ?? '';
       const duree = props.duree ?? '';
@@ -609,18 +675,36 @@
 
       const prixTxt = (prix === 0 || prix === "0") ? "0 €" : (prix ? `${esc(prix)} €` : '');
 
+      // Formater la date en format français DD/MM/YYYY
+      const dateFormatted = formatDateFrench(date);
+
+      // Formater la durée en minutes
+      const dureeFormatted = formatDureeMinutes(duree);
+
+      // Générer la description "Visite prévue le..." en format français complet
+      let visitePrevue = '';
+      if (date) {
+        const dateFullFrench = formatDateFullFrench(date, jour);
+        if (dateFullFrench) {
+          visitePrevue = 'Visite prévue le ' + dateFullFrench;
+          if (horaire) {
+            visitePrevue += ' de ' + horaire;
+          }
+        }
+      }
+
       return `
         <div class="popup">
           <h3>${esc(num)}. ${esc(name)}${badgeHtml}</h3>
           <ul class="meta">
-            ${date ? `<li>📅 <strong>Date</strong> : ${esc(date)}</li>` : ''}
+            ${dateFormatted ? `<li>📅 <strong>Date</strong> : ${esc(dateFormatted)}</li>` : ''}
             ${horaire ? `<li>⏰ <strong>Horaire</strong> : ${esc(horaire)}</li>` : ''}
-            ${duree ? `<li>⏱ <strong>Durée</strong> : ${esc(duree)}</li>` : ''}
+            ${dureeFormatted ? `<li>⏱ <strong>Durée</strong> : ${esc(dureeFormatted)}</li>` : ''}
             ${prixTxt ? `<li>💶 <strong>Prix</strong> : ${prixTxt}</li>` : ''}
             ${(props.reservation !== undefined && props.reservation !== null) ? `<li>📞 <strong>Réservation</strong> : ${esc(reservation)}</li>` : ''}
             ${lienUrl}
           </ul>
-          ${description ? `<p class="muted" style="margin:8px 0 0 0;">${esc(description)}</p>` : ''}
+          ${visitePrevue ? `<p class="muted" style="margin:8px 0 0 0;">${esc(visitePrevue)}</p>` : (description ? `<p class="muted" style="margin:8px 0 0 0;">${esc(description)}</p>` : '')}
         </div>
       `;
     }
