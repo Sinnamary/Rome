@@ -63,7 +63,7 @@
       "properties": {
         "name": "Fontana di Trevi",
         "description": "Visite prévue le Mardi 2026-04-14 de 09:00 à 09:45",
-        "prix": 0,
+        "prix": 2,
         "duree": "0 days 00:45:00",
         "date": "2026-04-14",
         "heure_debut": "09:00",
@@ -71,7 +71,7 @@
         "temps_trajet": "5 min",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://www.partir-a-rome.com/visites-incontournables/fontaine-trevi",
         "priorite": "moyenne",
         "ordre": "2.1"
       }
@@ -121,7 +121,7 @@
         "temps_trajet": "4 min",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://www.cityzeum.com/la-place-de-la-minerve",
         "priorite": "moyenne",
         "ordre": "2.3"
       }
@@ -196,7 +196,7 @@
         "temps_trajet": "4 min",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://www.turismoroma.it/fr/places/%C3%A9glise-saint-louis-des-fran%C3%A7ais",
         "priorite": "moyenne",
         "ordre": "2.6"
       }
@@ -221,7 +221,7 @@
         "temps_trajet": "3 min",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://bonjourrome.fr/piazza-navona-rome/",
         "priorite": "moyenne",
         "ordre": "2.7"
       }
@@ -246,7 +246,7 @@
         "temps_trajet": "",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://romesite.fr/sainte-marie-majeure.html",
         "priorite": "moyenne",
         "ordre": "2.8"
       }
@@ -296,7 +296,7 @@
         "temps_trajet": "",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://centresocialhenrimatisse.fr/pont-saint-ange-rome/",
         "priorite": "moyenne",
         "ordre": "3.1"
       }
@@ -471,7 +471,7 @@
         "temps_trajet": "",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://www.walksinsiderome.com/fr/tour-attractions/altare-della-patria/",
         "priorite": "moyenne",
         "ordre": "4.4"
       }
@@ -546,7 +546,7 @@
         "temps_trajet": "",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://www.archeoroma.fr/sites/circus-maximus/",
         "priorite": "moyenne",
         "ordre": "5.2"
       }
@@ -570,8 +570,8 @@
         "heure_fin": "15:30",
         "temps_trajet": "10 min",
         "carte": "",
-        "reservation": false,
-        "url": "",
+        "reservation": true,
+        "url": "https://colosseum.tickets-rome.com/fr/?ci=2&cm=555637096_1311718611955935_c_o_colis%C3%A9e%20romain_e_{extensionid}&campaign=Rome-Colosseum-French-France-Search-All-All-cid220&campaignid=555637096&adgroupid=1311718611955935&keyword=colis%C3%A9e%20romain&device=c&msclkid=9f3b62927ff11fb2025f0bca9889f8a5&utm_source=bing&utm_medium=cpc&utm_campaign=Rome%20-%20Colosseum%20-%20French%20-%20All%20-%20Search%20-%20All%20-%20All%20-%20cid220&utm_term=colis%C3%A9e%20romain&utm_content=Generic%20-%20Exact%20-%20French%20-%20Colosseum",
         "priorite": "moyenne",
         "ordre": "5.4"
       }
@@ -596,7 +596,7 @@
         "temps_trajet": "1 min",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.tiqets.com/fr/billets-forum-romain-l146049/?utm_account=154002408&utm_source=bing&utm_medium=cpc&utm_campaign=710432113&utm_content=1251245548423528&msclkid=c4b9a12ff80718bc4ea9c8771fc91e8a&utm_term=forum+romain",
         "priorite": "moyenne",
         "ordre": "5.5"
       }
@@ -621,7 +621,7 @@
         "temps_trajet": "2 min",
         "carte": "",
         "reservation": false,
-        "url": "",
+        "url": "https://colosseo-roma.it/fr/explorer/arc-constantinois/",
         "priorite": "moyenne",
         "ordre": "5.6"
       }
