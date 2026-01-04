@@ -118,16 +118,99 @@
         }
         return (meters / 1000).toFixed(2) + " km";
       }
+      
+      parseDistance(distanceStr) {
+        // Parse une distance au format "30.5 km" ou "850 m" en mètres
+        if (!distanceStr || typeof distanceStr !== 'string') return null;
+        const str = distanceStr.trim().toLowerCase();
+        // Regex pour km: nombre suivi de "km"
+        const kmRegex = /([\d.]+)\s*km/;
+        const kmMatch = str.match(kmRegex);
+        if (kmMatch) {
+          return parseFloat(kmMatch[1]) * 1000;
+        }
+        // Regex pour m: nombre suivi de "m" (mais pas "km")
+        const mRegex = /([\d.]+)\s*m(?!m)/;
+        const mMatch = str.match(mRegex);
+        if (mMatch) {
+          return parseFloat(mMatch[1]);
+        }
+        // Essayer de parser comme nombre simple (supposé en km)
+        const numRegex = /([\d.]+)/;
+        const numMatch = str.match(numRegex);
+        if (numMatch) {
+          const num = parseFloat(numMatch[1]);
+          // Si < 10, supposer km, sinon mètres
+          return num < 10 ? num * 1000 : num;
+        }
+        return null;
+      }
+      
+      calculateTravelTime(distanceMeters, transport) {
+        // Vitesses moyennes en m/s selon le moyen de transport
+        const speeds = {
+          'marche': 1.4,      // 5 km/h = 1.4 m/s
+          'pied': 1.4,        // 5 km/h = 1.4 m/s
+          'velo': 4.2,        // 15 km/h = 4.2 m/s
+          'vélo': 4.2,        // 15 km/h = 4.2 m/s
+          'metro': 8.3,       // 30 km/h = 8.3 m/s
+          'métro': 8.3,       // 30 km/h = 8.3 m/s
+          'bus': 6.9,         // 25 km/h = 6.9 m/s
+          'train': 13.9,      // 50 km/h = 13.9 m/s
+          'voiture': 11.1,    // 40 km/h en ville = 11.1 m/s
+          'taxi': 11.1,       // 40 km/h en ville = 11.1 m/s
+          'default': 1.4      // Par défaut: marche (5 km/h)
+        };
+        
+        if (!distanceMeters || distanceMeters <= 0) return null;
+        
+        const transportLower = (transport || '').toLowerCase().trim();
+        const speed = speeds[transportLower] || speeds['default'];
+        const timeSeconds = distanceMeters / speed;
+        const timeMinutes = Math.round(timeSeconds / 60);
+        
+        if (timeMinutes < 1) return '< 1 min';
+        if (timeMinutes < 60) return timeMinutes + ' min';
+        const hours = Math.floor(timeMinutes / 60);
+        const minutes = timeMinutes % 60;
+        return hours + 'h' + (minutes > 0 ? minutes + 'min' : '');
+      }
       createRouteLine(point1, point2, color) {
         const lat1 = point1.lat;
         const lon1 = point1.lon;
         const lat2 = point2.lat;
         const lon2 = point2.lon;
         
-        const distance = this.calculateDistance(lat1, lon1, lat2, lon2);
-        const distanceText = this.formatDistance(distance);
+        // Utiliser la distance manuelle si présente, sinon calculer automatiquement
+        let distanceText;
+        let distanceMeters = null;
+        if (point2.distance && point2.distance.trim() !== '') {
+          // Distance manuelle renseignée dans le fichier Excel
+          distanceText = point2.distance.trim();
+          distanceMeters = this.parseDistance(distanceText);
+        } else {
+          // Calculer automatiquement la distance à vol d'oiseau
+          distanceMeters = this.calculateDistance(lat1, lon1, lat2, lon2);
+          distanceText = this.formatDistance(distanceMeters);
+        }
+        
+        // Récupérer le temps de trajet et le transport
         const tempsTrajet = point2.temps_trajet || '';
-        const tempsTrajetText = tempsTrajet ? 'Temps: ' + tempsTrajet : '';
+        const transport = point2.transport || '';
+        
+        // Calculer le temps de trajet si absent
+        let tempsTrajetText = '';
+        if (tempsTrajet && tempsTrajet.trim() !== '') {
+          // Temps renseigné manuellement
+          tempsTrajetText = tempsTrajet.trim();
+        } else if (distanceMeters && distanceMeters > 0) {
+          // Calculer le temps basé sur la distance et le moyen de transport
+          const transportMode = transport || 'marche'; // Par défaut: marche
+          const calculatedTime = this.calculateTravelTime(distanceMeters, transportMode);
+          if (calculatedTime) {
+            tempsTrajetText = calculatedTime + ' (estimé)';
+          }
+        }
         
         const polyline = L.polyline(
           [[lat1, lon1], [lat2, lon2]],
@@ -140,16 +223,27 @@
           }
         );
         
+        // Construire le contenu de la popup
         let popupLines = [
           '<strong>' + point1.order + ' → ' + point2.order + '</strong>',
-          '<span style="color: #666;">Distance: ' + distanceText + '</span>'
+          '<hr style="margin: 5px 0; border: none; border-top: 1px solid #ddd;">'
         ];
         
+        // Distance
+        popupLines.push('<span style="color: #666;"><strong>Distance:</strong> ' + distanceText + '</span>');
+        
+        // Temps de trajet
         if (tempsTrajetText) {
-          popupLines.push('<span style="color: #666;">' + tempsTrajetText + '</span>');
+          popupLines.push('<span style="color: #666;"><strong>Temps:</strong> ' + tempsTrajetText + '</span>');
         }
         
-        const popupContent = '<div style="text-align: center;">' + popupLines.join('<br>') + '</div>';
+        // Moyen de transport
+        if (transport && transport.trim() !== '') {
+          const transportDisplay = transport.charAt(0).toUpperCase() + transport.slice(1).toLowerCase();
+          popupLines.push('<span style="color: #666;"><strong>Transport:</strong> ' + transportDisplay + '</span>');
+        }
+        
+        const popupContent = '<div style="text-align: center; padding: 5px;">' + popupLines.join('<br>') + '</div>';
         polyline.bindPopup(popupContent);
         
         return polyline;
@@ -167,7 +261,7 @@
           const coords = feature.geometry && feature.geometry.coordinates;
           if (!coords || coords.length < 2) return;
           
-          const point = {
+            const point = {
             order: order,
             day: day,
             visit: this.parseVisitFromOrder(order),
@@ -175,6 +269,8 @@
             lon: coords[0],
             name: props.name || 'Point ' + order,
             temps_trajet: props.temps_trajet || '',
+            distance: props.distance || '',
+            transport: props.transport || '',
             index: index
           };
           
@@ -410,7 +506,7 @@
     }
 
     // ✅ URL du fichier GeoJSON sur GitHub
-    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-03.geojson";
+    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-04.geojson";
 
     const map = L.map('map', { zoomControl: true });
 
