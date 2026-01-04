@@ -70,6 +70,42 @@
     .leaflet-control-layers-overlays label:hover {
       background-color: #f0f0f0;
     }
+    /* Styles pour le calque hop-on hop-off */
+    .hoponhopoff-route {
+      cursor: pointer;
+    }
+    
+    .hoponhopoff-route:hover {
+      opacity: 1;
+      stroke-width: 6;
+    }
+    
+    .hoponhopoff-stop-icon {
+      background: transparent;
+      border: none;
+    }
+    
+    .hoponhopoff-stop-marker {
+      width: 24px;
+      height: 24px;
+      background-color: #FF6B35;
+      border: 3px solid white;
+      border-radius: 50%;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .hoponhopoff-stop-marker:hover {
+      transform: scale(1.2);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    }
   </style>
 </head>
 <body>
@@ -504,11 +540,333 @@
       
       processRoutes(features);
     }
+    // ============================================================
+    // MODULE HOP-ON HOP-OFF - Calque du bus touristique de Rome
+    // ============================================================
+    // Ce code est complètement indépendant du code principal et des routes
+    // Il gère uniquement l'affichage du parcours et des arrêts du bus hop-on hop-off
+        class HopOnHopOffLayerManager {
+      constructor(map) {
+        this.map = map;
+        this.routeLayer = null;
+        this.stopMarkers = [];
+        this.layerControl = null;
+      }
+      createRoute() {
+        // Coordonnées des arrêts du bus hop-on hop-off
+        const routeCoordinates = [
+          [41.9019, 12.5018],
+          [41.8902, 12.4922],
+          [41.886, 12.4858],
+          [41.8884, 12.4819],
+          [41.8955, 12.4723],
+          [41.8992, 12.4731],
+          [41.8986, 12.4768],
+          [41.9009, 12.4833],
+          [41.906, 12.4823],
+          [41.9142, 12.4869],
+          [41.9106, 12.4762],
+          [41.9065, 12.4534],
+          [41.9022, 12.4539],
+          [41.9031, 12.4663]
+        ];
+        
+        // Créer la polyline du parcours
+        this.routeLayer = L.polyline(routeCoordinates, {
+          color: '#FF6B35',
+          weight: 5,
+          opacity: 0.8,
+          className: 'hoponhopoff-route'
+        });
+        
+        // Ajouter un popup au parcours
+        const routeInfo = '<div style="text-align: center; padding: 10px;">' +
+          '<h3 style="margin: 0 0 10px 0; color: #FF6B35;">🚌 Bus Hop-On Hop-Off</h3>' +
+          '<p style="margin: 5px 0;"><strong>Parcours touristique de Rome</strong></p>' +
+          '<p style="margin: 5px 0; font-size: 0.9em; color: #666;">' +
+          '14 arrêts principaux</p>' +
+          '<p style="margin: 5px 0; font-size: 0.85em; color: #888;">' +
+          'Cliquez sur les marqueurs pour voir les arrêts</p>' +
+          '</div>';
+        this.routeLayer.bindPopup(routeInfo);
+        
+        return this.routeLayer;
+      }
+      createStops() {
+        // Nettoyer les marqueurs existants
+        this.clearStops();
+        
+        // Définir les arrêts
+        const stops = [
+          {
+            name: "Termini Station",
+            lat: 41.9019,
+            lon: 12.5018,
+            description: "Gare principale de Rome - Point de départ principal",
+            order: 1
+          },
+          {
+            name: "Colosseum",
+            lat: 41.8902,
+            lon: 12.4922,
+            description: "Colisée - Amphithéâtre Flavien",
+            order: 2
+          },
+          {
+            name: "Circus Maximus",
+            lat: 41.886,
+            lon: 12.4858,
+            description: "Cirque Maxime - Ancien stade romain",
+            order: 3
+          },
+          {
+            name: "Bocca della Verità",
+            lat: 41.8884,
+            lon: 12.4819,
+            description: "Bouche de la Vérité",
+            order: 4
+          },
+          {
+            name: "Campo de' Fiori",
+            lat: 41.8955,
+            lon: 12.4723,
+            description: "Campo de' Fiori - Marché et place historique",
+            order: 5
+          },
+          {
+            name: "Piazza Navona",
+            lat: 41.8992,
+            lon: 12.4731,
+            description: "Place Navone - Place baroque",
+            order: 6
+          },
+          {
+            name: "Pantheon",
+            lat: 41.8986,
+            lon: 12.4768,
+            description: "Panthéon - Temple romain",
+            order: 7
+          },
+          {
+            name: "Trevi Fountain",
+            lat: 41.9009,
+            lon: 12.4833,
+            description: "Fontaine de Trevi",
+            order: 8
+          },
+          {
+            name: "Spanish Steps",
+            lat: 41.906,
+            lon: 12.4823,
+            description: "Escalier de la Trinité-des-Monts",
+            order: 9
+          },
+          {
+            name: "Villa Borghese",
+            lat: 41.9142,
+            lon: 12.4869,
+            description: "Villa Borghèse - Parc et musées",
+            order: 10
+          },
+          {
+            name: "Piazza del Popolo",
+            lat: 41.9106,
+            lon: 12.4762,
+            description: "Place du Peuple",
+            order: 11
+          },
+          {
+            name: "Vatican Museums",
+            lat: 41.9065,
+            lon: 12.4534,
+            description: "Musées du Vatican",
+            order: 12
+          },
+          {
+            name: "St. Peter's Basilica",
+            lat: 41.9022,
+            lon: 12.4539,
+            description: "Basilique Saint-Pierre",
+            order: 13
+          },
+          {
+            name: "Castel Sant'Angelo",
+            lat: 41.9031,
+            lon: 12.4663,
+            description: "Château Saint-Ange",
+            order: 14
+          }
+        ];
+
+        // Créer un marqueur pour chaque arrêt
+        stops.forEach((stop) => {
+          // Créer une icône personnalisée pour les arrêts
+          const stopIcon = L.divIcon({
+            className: 'hoponhopoff-stop-icon',
+            html: '<div class="hoponhopoff-stop-marker">' + stop.order + '</div>',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [0, -12]
+          });
+          
+          // Créer le marqueur
+          const marker = L.marker([stop.lat, stop.lon], { icon: stopIcon });
+          
+          // Créer le contenu du popup
+          const popupContent = '<div style="text-align: center; padding: 8px; min-width: 200px;">' +
+            '<div style="color: #FF6B35; font-weight: bold; margin-bottom: 5px;">' +
+            '🚌 Arrêt ' + stop.order + '</div>' +
+            '<div style="font-size: 1.1em; font-weight: bold; margin-bottom: 5px;">' +
+            stop.name + '</div>' +
+            (stop.description ? '<div style="font-size: 0.9em; color: #666; margin-top: 5px;">' +
+            stop.description + '</div>' : '') +
+            '</div>';
+          
+          marker.bindPopup(popupContent);
+          this.stopMarkers.push(marker);
+        });
+        
+        console.log("[HOPONHOPOFF] " + this.stopMarkers.length + " arrêt(s) créé(s)");
+        return this.stopMarkers;
+      }
+      clearRoute() {
+        if (this.routeLayer && this.map.hasLayer(this.routeLayer)) {
+          this.map.removeLayer(this.routeLayer);
+        }
+        this.routeLayer = null;
+      }
+      
+      clearStops() {
+        this.stopMarkers.forEach((marker) => {
+          if (this.map.hasLayer(marker)) {
+            this.map.removeLayer(marker);
+          }
+        });
+        this.stopMarkers = [];
+      }
+      
+      clearAll() {
+        this.clearRoute();
+        this.clearStops();
+      }
+      showRoute() {
+        if (this.routeLayer && !this.map.hasLayer(this.routeLayer)) {
+          this.routeLayer.addTo(this.map);
+        }
+      }
+      
+      hideRoute() {
+        if (this.routeLayer && this.map.hasLayer(this.routeLayer)) {
+          this.map.removeLayer(this.routeLayer);
+        }
+      }
+      
+      showStops() {
+        this.stopMarkers.forEach((marker) => {
+          if (!this.map.hasLayer(marker)) {
+            marker.addTo(this.map);
+          }
+        });
+      }
+      
+      hideStops() {
+        this.stopMarkers.forEach((marker) => {
+          if (this.map.hasLayer(marker)) {
+            this.map.removeLayer(marker);
+          }
+        });
+      }
+      
+      showAll() {
+        this.showRoute();
+        this.showStops();
+      }
+      
+      hideAll() {
+        this.hideRoute();
+        this.hideStops();
+      }
+      addLayerControl(baseLayers, overlayLayers) {
+        if (this.layerControl) {
+          this.map.removeControl(this.layerControl);
+        }
+        
+        const hoponhopoffOverlays = {
+          'Bus Hop-On Hop-Off - Parcours': this.routeLayer,
+          'Bus Hop-On Hop-Off - Arrêts': L.layerGroup(this.stopMarkers)
+        };
+        
+        const allOverlays = Object.assign({}, hoponhopoffOverlays, overlayLayers);
+        
+        this.layerControl = L.control.layers(baseLayers, allOverlays, {
+          position: 'topright',
+          collapsed: true
+        });
+        
+        this.layerControl.addTo(this.map);
+      }
+    }
+    let hopOnHopOffManager = null;
+    
+    function initHopOnHopOffManager(map) {
+      if (!hopOnHopOffManager) {
+        hopOnHopOffManager = new HopOnHopOffLayerManager(map);
+        console.log("[HOPONHOPOFF] Gestionnaire hop-on hop-off initialisé");
+      }
+      return hopOnHopOffManager;
+    }
+    function processHopOnHopOff() {
+      // Vérifier que map existe avant d'essayer de l'utiliser
+      if (typeof map === 'undefined') {
+        console.warn("[HOPONHOPOFF] La carte n'est pas encore initialisée");
+        return;
+      }
+      
+      if (!hopOnHopOffManager) {
+        hopOnHopOffManager = initHopOnHopOffManager(map);
+      }
+      
+      // Créer le parcours et les arrêts
+      hopOnHopOffManager.createRoute();
+      hopOnHopOffManager.createStops();
+      
+      // Afficher par défaut
+      hopOnHopOffManager.showAll();
+      
+      // Ajouter au contrôle de calques
+      const baseLayers = {};
+      const overlayLayers = {};
+      hopOnHopOffManager.addLayerControl(baseLayers, overlayLayers);
+      
+      console.log("[HOPONHOPOFF] Calque hop-on hop-off créé et affiché");
+    }    
+    // ============================================================
+    // FIN DU MODULE HOP-ON HOP-OFF
+    // ============================================================
+    
+    // Intégration du calque hop-on hop-off
+    function integrateHopOnHopOff() {
+      if (typeof map === 'undefined') {
+        console.warn("[HOPONHOPOFF] La carte n'est pas encore initialisée, attente...");
+        setTimeout(() => integrateHopOnHopOff(), 100);
+        return;
+      }
+      
+      if (!hopOnHopOffManager) {
+        hopOnHopOffManager = initHopOnHopOffManager(map);
+      }
+      
+      processHopOnHopOff();
+    }
 
     // ✅ URL du fichier GeoJSON sur GitHub
     const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-04.geojson";
 
-    const map = L.map('map', { zoomControl: true });
+    // Déclarer map dans le scope global pour éviter les erreurs de référence
+    let map;
+    
+    // Initialiser la carte
+    map = L.map('map', { zoomControl: true });
 
     // Fond de carte (OpenStreetMap)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -692,6 +1050,10 @@
       // Intégrer les routes après traitement du GeoJSON
       if (typeof integrateRoutes === 'function') {
         integrateRoutes(gj.features || []);
+      }
+      // Intégrer le calque hop-on hop-off après traitement du GeoJSON
+      if (typeof integrateHopOnHopOff === 'function') {
+        integrateHopOnHopOff();
       }
     }
     
