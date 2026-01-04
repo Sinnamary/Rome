@@ -86,25 +86,27 @@
     }
     
     .hoponhopoff-stop-marker {
-      width: 24px;
-      height: 24px;
-      background-color: #FF6B35;
-      border: 3px solid white;
-      border-radius: 50%;
-      color: white;
-      font-weight: bold;
-      font-size: 12px;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s ease;
+      position: relative;
+    }
+    
+    .hoponhopoff-stop-marker::before {
+      content: '🚌';
+      font-size: 32px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
     }
     
     .hoponhopoff-stop-marker:hover {
       transform: scale(1.2);
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
@@ -700,13 +702,13 @@
 
         // Créer un marqueur pour chaque arrêt
         stops.forEach((stop) => {
-          // Créer une icône personnalisée pour les arrêts
+          // Créer une icône personnalisée pour les arrêts (juste l'icône de bus)
           const stopIcon = L.divIcon({
             className: 'hoponhopoff-stop-icon',
-            html: '<div class="hoponhopoff-stop-marker">' + stop.order + '</div>',
-            iconSize: [24, 24],
-            iconAnchor: [12, 12],
-            popupAnchor: [0, -12]
+            html: '<div class="hoponhopoff-stop-marker" title="Arrêt ' + stop.order + '"></div>',
+            iconSize: [32, 32],
+            iconAnchor: [16, 16],
+            popupAnchor: [0, -16]
           });
           
           // Créer le marqueur
@@ -791,9 +793,12 @@
           this.map.removeControl(this.layerControl);
         }
         
+        // Créer les calques séparés : Arrêts en premier, puis Parcours
+        const stopsLayerGroup = L.layerGroup(this.stopMarkers);
+        
         const hoponhopoffOverlays = {
-          'Bus Hop-On Hop-Off - Parcours': this.routeLayer,
-          'Bus Hop-On Hop-Off - Arrêts': L.layerGroup(this.stopMarkers)
+          'Bus Hop-On Hop-Off - Arrêts': stopsLayerGroup,
+          'Bus Hop-On Hop-Off - Parcours': this.routeLayer
         };
         
         const allOverlays = Object.assign({}, hoponhopoffOverlays, overlayLayers);
@@ -826,19 +831,19 @@
         hopOnHopOffManager = initHopOnHopOffManager(map);
       }
       
-      // Créer le parcours et les arrêts
+      // Créer le parcours et les arrêts (mais ne pas les afficher par défaut)
       hopOnHopOffManager.createRoute();
       hopOnHopOffManager.createStops();
       
-      // Afficher par défaut
-      hopOnHopOffManager.showAll();
+      // Ne pas afficher par défaut - les cases seront non cochées dans le contrôle de calques
+      // L'utilisateur devra cocher les cases pour afficher les arrêts ou le parcours
       
-      // Ajouter au contrôle de calques
+      // Ajouter au contrôle de calques (Arrêts en premier, Parcours en dessous)
       const baseLayers = {};
       const overlayLayers = {};
       hopOnHopOffManager.addLayerControl(baseLayers, overlayLayers);
       
-      console.log("[HOPONHOPOFF] Calque hop-on hop-off créé et affiché");
+      console.log("[HOPONHOPOFF] Calque hop-on hop-off créé (masqué par défaut)");
     }    
     // ============================================================
     // FIN DU MODULE HOP-ON HOP-OFF
