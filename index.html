@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rome 2026 — Visites (GeoJSON)</title>
+  <title>Rome 2026</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
   <!-- Leaflet -->
@@ -30,6 +30,17 @@
     .prio-moyenne { background: #ef6c00; }
     .prio-basse { background: #2e7d32; }
     .prio-defaut { background: #0d47a1; }
+
+    /* Hébergement marker (ordre 0.0) */
+    .hebergement-marker{
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      background: #1e3a8a;
+      border: 3px solid rgba(255,255,255,0.95);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    }
 
     /* Popup layout */
     .popup h3 { margin: 0 0 6px 0; font-size: 16px; }
@@ -129,6 +140,10 @@
       }
       parseDayFromOrder(orderStr) {
         if (!orderStr || typeof orderStr !== 'string') return null;
+        // Gérer l'ordre 0.0 (hébergement) - utiliser la date pour déterminer le jour
+        if (orderStr === '0.0' || orderStr === '0' || parseFloat(orderStr) === 0.0) {
+          return 0; // Retourner 0 pour indiquer que c'est un hébergement
+        }
         const match = orderStr.match(/^(\d+)\./);
         return match ? parseInt(match[1], 10) : null;
       }
@@ -289,17 +304,61 @@
       groupPointsByDay(features) {
         const pointsByDay = new Map();
         
+        // D'abord, collecter toutes les dates pour mapper les hébergements (ordre 0.0) aux jours
+        const dateToDayMap = new Map();
+        features.forEach((feature) => {
+          const props = feature.properties || {};
+          const order = String(props.ordre || props.numero || props.visite || '');
+          const date = props.date || '';
+          // Si ce n'est pas un hébergement, extraire le jour de l'ordre
+          if (order !== '0.0' && order !== '0' && parseFloat(order) !== 0.0) {
+            const day = this.parseDayFromOrder(order);
+            if (day !== null && day !== 0 && date) {
+              // Mapper la date au jour pour les points normaux
+              if (!dateToDayMap.has(date)) {
+                dateToDayMap.set(date, day);
+              }
+            }
+          }
+        });
+        
         features.forEach((feature, index) => {
           const props = feature.properties || {};
           const order = String(props.ordre || props.numero || props.visite || (index + 1));
-          const day = this.parseDayFromOrder(order);
+          const date = props.date || '';
+          let day = this.parseDayFromOrder(order);
+          
+          // Si c'est un hébergement (ordre 0.0), utiliser la date pour déterminer le jour
+          if (day === 0) {
+            // Chercher le jour correspondant à cette date
+            day = dateToDayMap.get(date);
+            // Si pas trouvé, essayer de déduire du premier point non-hébergement de cette date
+            if (!day) {
+              // Parcourir les features pour trouver le premier point non-hébergement de cette date
+              for (let i = 0; i < features.length; i++) {
+                const f = features[i];
+                const p = f.properties || {};
+                const o = String(p.ordre || p.numero || p.visite || '');
+                const d = p.date || '';
+                if (d === date && o !== '0.0' && o !== '0' && parseFloat(o) !== 0.0) {
+                  day = this.parseDayFromOrder(o);
+                  if (day !== null && day !== 0) {
+                    dateToDayMap.set(date, day);
+                    break;
+                  }
+                }
+              }
+            }
+            // Si toujours pas trouvé, utiliser 1 par défaut
+            if (!day) day = 1;
+          }
           
           if (day === null) return;
           
           const coords = feature.geometry && feature.geometry.coordinates;
           if (!coords || coords.length < 2) return;
           
-            const point = {
+          const point = {
             order: order,
             day: day,
             visit: this.parseVisitFromOrder(order),
@@ -309,7 +368,8 @@
             temps_trajet: props.temps_trajet || '',
             distance: props.distance || '',
             transport: props.transport || '',
-            index: index
+            index: index,
+            isHebergement: (order === '0.0' || order === '0' || parseFloat(order) === 0.0)
           };
           
           if (!pointsByDay.has(day)) {
@@ -320,27 +380,87 @@
         
         pointsByDay.forEach((points, day) => {
           points.sort((a, b) => {
+            // Pour les hébergements (ordre 0.0), préserver l'ordre original (index)
+            if (a.isHebergement && b.isHebergement) {
+              return a.index - b.index;
+            }
+            if (a.isHebergement) {
+              // Hébergement avant les points normaux (sera ajusté selon le jour dans le tri final)
+              return -1;
+            }
+            if (b.isHebergement) {
+              // Points normaux après les hébergements
+              return 1;
+            }
+            
+            // Pour les points normaux, utiliser le numéro de visite
             if (a.visit === null && b.visit === null) return 0;
             if (a.visit === null) return 1;
             if (b.visit === null) return -1;
             return a.visit - b.visit;
           });
+          
+          // Ajuster l'ordre des hébergements selon le jour
+          const allDays = Array.from(pointsByDay.keys()).sort((x, y) => x - y);
+          const isFirstDay = day === allDays[0];
+          const isLastDay = day === allDays[allDays.length - 1];
+          
+          // Séparer les hébergements des points normaux
+          const hebergements = points.filter(p => p.isHebergement);
+          const normalPoints = points.filter(p => !p.isHebergement);
+          
+          if (hebergements.length > 0) {
+            if (isFirstDay) {
+              // Premier jour : hébergement à la fin uniquement
+              pointsByDay.set(day, [...normalPoints, ...hebergements]);
+            } else if (isLastDay) {
+              // Dernier jour : hébergement au début uniquement
+              pointsByDay.set(day, [...hebergements, ...normalPoints]);
+            } else {
+              // Jours intermédiaires : hébergement au début et à la fin
+              // Garder l'ordre original (premier hébergement au début, dernier à la fin)
+              if (hebergements.length >= 2) {
+                pointsByDay.set(day, [hebergements[0], ...normalPoints, ...hebergements.slice(1)]);
+              } else {
+                // Si un seul hébergement, le placer au début
+                pointsByDay.set(day, [...hebergements, ...normalPoints]);
+              }
+            }
+          }
         });
         
         return pointsByDay;
       }
       createMarker(feature, lat, lng, order) {
         const props = feature.properties || {};
-        const priorite = props.priorite || '';
-        const prioInfo = prioClass(priorite);
-        const cls = prioInfo.cls;
-        const iconHtml = '<div class="num-marker ' + cls + '">' + esc(order) + '</div>';
+        const orderStr = String(order);
+        const isHebergement = (orderStr === '0.0' || orderStr === '0' || parseFloat(orderStr) === 0.0);
+        
+        let iconHtml, iconSize, iconAnchor, popupAnchor;
+        
+        if (isHebergement) {
+          // Icône d'hébergement
+          iconHtml = '<div class="hebergement-marker">🏠</div>';
+          iconSize = [40, 40];
+          iconAnchor = [20, 40];
+          popupAnchor = [0, -35];
+        } else {
+          // Icône normale avec numéro
+          const priorite = props.priorite || '';
+          const prioInfo = prioClass(priorite);
+          const cls = prioInfo.cls;
+          iconHtml = '<div class="num-marker ' + cls + '">' + esc(order) + '</div>';
+          iconSize = [32, 32];
+          iconAnchor = [16, 32];
+          popupAnchor = [0, -28];
+        }
+        
         const icon = L.divIcon({
           className: '',
           html: iconHtml,
-          iconSize: [32, 32],
-          iconAnchor: [16, 32],
-          popupAnchor: [0, -28]
+          iconSize: iconSize,
+          iconAnchor: iconAnchor,
+          popupAnchor: popupAnchor
         });
         const marker = L.marker([lat, lng], { icon: icon });
         marker.bindPopup(makePopup(props, order), { maxWidth: 320 });
@@ -575,7 +695,7 @@
         
         // Créer la polyline du parcours
         this.routeLayer = L.polyline(routeCoordinates, {
-          color: '#FF6B35',
+          color: '#ff6b35',
           weight: 5,
           opacity: 0.8,
           className: 'hoponhopoff-route'
@@ -583,7 +703,7 @@
         
         // Ajouter un popup au parcours
         const routeInfo = '<div style="text-align: center; padding: 10px;">' +
-          '<h3 style="margin: 0 0 10px 0; color: #FF6B35;">🚌 Bus Hop-On Hop-Off</h3>' +
+          '<h3 style="margin: 0 0 10px 0; color: #ff6b35;">🚌 Bus Hop-On Hop-Off</h3>' +
           '<p style="margin: 5px 0;"><strong>Parcours touristique de Rome</strong></p>' +
           '<p style="margin: 5px 0; font-size: 0.9em; color: #666;">' +
           '14 arrêts principaux</p>' +
@@ -605,98 +725,112 @@
             lat: 41.9019,
             lon: 12.5018,
             description: "Gare principale de Rome - Point de départ principal",
-            order: 1
+            order: 1,
+            note: ""
           },
           {
             name: "Colosseum",
             lat: 41.8902,
             lon: 12.4922,
             description: "Colisée - Amphithéâtre Flavien",
-            order: 2
+            order: 2,
+            note: ""
           },
           {
             name: "Circus Maximus",
             lat: 41.886,
             lon: 12.4858,
             description: "Cirque Maxime - Ancien stade romain",
-            order: 3
+            order: 3,
+            note: ""
           },
           {
             name: "Bocca della Verità",
             lat: 41.8884,
             lon: 12.4819,
             description: "Bouche de la Vérité",
-            order: 4
+            order: 4,
+            note: ""
           },
           {
             name: "Campo de' Fiori",
             lat: 41.8955,
             lon: 12.4723,
-            description: "Campo de' Fiori - Marché et place historique",
-            order: 5
+            description: "Campo de\' Fiori - Marché et place historique",
+            order: 5,
+            note: ""
           },
           {
             name: "Piazza Navona",
             lat: 41.8992,
             lon: 12.4731,
             description: "Place Navone - Place baroque",
-            order: 6
+            order: 6,
+            note: ""
           },
           {
             name: "Pantheon",
             lat: 41.8986,
             lon: 12.4768,
             description: "Panthéon - Temple romain",
-            order: 7
+            order: 7,
+            note: ""
           },
           {
             name: "Trevi Fountain",
             lat: 41.9009,
             lon: 12.4833,
             description: "Fontaine de Trevi",
-            order: 8
+            order: 8,
+            note: ""
           },
           {
             name: "Spanish Steps",
             lat: 41.906,
             lon: 12.4823,
             description: "Escalier de la Trinité-des-Monts",
-            order: 9
+            order: 9,
+            note: ""
           },
           {
             name: "Villa Borghese",
             lat: 41.9142,
             lon: 12.4869,
             description: "Villa Borghèse - Parc et musées",
-            order: 10
+            order: 10,
+            note: ""
           },
           {
             name: "Piazza del Popolo",
             lat: 41.9106,
             lon: 12.4762,
             description: "Place du Peuple",
-            order: 11
+            order: 11,
+            note: ""
           },
           {
             name: "Vatican Museums",
             lat: 41.9065,
             lon: 12.4534,
             description: "Musées du Vatican",
-            order: 12
+            order: 12,
+            note: ""
           },
           {
             name: "St. Peter's Basilica",
             lat: 41.9022,
             lon: 12.4539,
             description: "Basilique Saint-Pierre",
-            order: 13
+            order: 13,
+            note: ""
           },
           {
             name: "Castel Sant'Angelo",
             lat: 41.9031,
             lon: 12.4663,
             description: "Château Saint-Ange",
-            order: 14
+            order: 14,
+            note: ""
           }
         ];
 
@@ -716,12 +850,14 @@
           
           // Créer le contenu du popup
           const popupContent = '<div style="text-align: center; padding: 8px; min-width: 200px;">' +
-            '<div style="color: #FF6B35; font-weight: bold; margin-bottom: 5px;">' +
+            '<div style="color: #ff6b35; font-weight: bold; margin-bottom: 5px;">' +
             '🚌 Arrêt ' + stop.order + '</div>' +
             '<div style="font-size: 1.1em; font-weight: bold; margin-bottom: 5px;">' +
             stop.name + '</div>' +
             (stop.description ? '<div style="font-size: 0.9em; color: #666; margin-top: 5px;">' +
             stop.description + '</div>' : '') +
+            (stop.note ? '<div style="font-size: 0.85em; color: #d97706; margin-top: 8px; padding: 5px; background-color: #fef3c7; border-left: 3px solid #d97706; border-radius: 3px;">' +
+            '⚠️ ' + stop.note + '</div>' : '') +
             '</div>';
           
           marker.bindPopup(popupContent);
@@ -865,7 +1001,7 @@
     }
 
     // ✅ URL du fichier GeoJSON sur GitHub
-    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-04.geojson";
+    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-05.geojson";
 
     // Déclarer map dans le scope global pour éviter les erreurs de référence
     let map;
@@ -1071,9 +1207,23 @@
         return { f, num, i };
       });
 
-      // Détecter et gérer les points superposés (mêmes coordonnées)
+      // Séparer les points d'hébergement (ordre 0.0) des autres points
+      const hebergementFeatures = [];
+      const normalFeatures = [];
+      
+      features.forEach(function(item) {
+        const num = item.num;
+        // Détecter l'ordre 0.0 (hébergement)
+        if (num === '0.0' || num === '0' || parseFloat(num) === 0.0) {
+          hebergementFeatures.push(item);
+        } else {
+          normalFeatures.push(item);
+        }
+      });
+
+      // Détecter et gérer les points superposés (mêmes coordonnées) pour les points normaux
       const coordMap = new Map();
-      const offsetFeatures = features.map(function(item) {
+      const offsetNormalFeatures = normalFeatures.map(function(item) {
         const f = item.f;
         const num = item.num;
         const i = item.i;
@@ -1101,9 +1251,32 @@
         return { f: f, num: num, i: i, lat: offsetLat, lng: offsetLng, originalLat: lat, originalLng: lng };
       });
 
+      // Regrouper les hébergements (ordre 0.0) en un seul point unique
+      const hebergementMap = new Map();
+      hebergementFeatures.forEach(function(item) {
+        const f = item.f;
+        const coords = f.geometry && f.geometry.type === 'Point' ? f.geometry.coordinates : null;
+        if (!coords) return;
+        const lng = coords[0];
+        const lat = coords[1];
+        const coordKey = lat.toFixed(6) + ',' + lng.toFixed(6);
+        
+        // Regrouper par coordonnées (un seul point d'hébergement par emplacement)
+        if (!hebergementMap.has(coordKey)) {
+          // Prendre la première feature trouvée pour cet emplacement
+          hebergementMap.set(coordKey, {
+            f: f,
+            lat: lat,
+            lng: lng,
+            props: f.properties || {}
+          });
+        }
+      });
+
       const group = L.featureGroup();
 
-      offsetFeatures.forEach(function(item) {
+      // Ajouter les points normaux
+      offsetNormalFeatures.forEach(function(item) {
         const f = item.f;
         const num = item.num;
         const lat = item.lat;
@@ -1126,6 +1299,27 @@
 
         const marker = L.marker([lat, lng], { icon: icon });
         marker.bindPopup(makePopup(props, num), { maxWidth: 320 });
+        marker.addTo(group);
+      });
+
+      // Ajouter les points d'hébergement (un seul par emplacement)
+      hebergementMap.forEach(function(hebergement) {
+        const props = hebergement.props;
+        const lat = hebergement.lat;
+        const lng = hebergement.lng;
+        
+        // Icône d'habitation pour l'hébergement
+        const iconHtml = '<div class="hebergement-marker">🏠</div>';
+        const icon = L.divIcon({
+          className: '',
+          html: iconHtml,
+          iconSize: [40, 40],
+          iconAnchor: [20, 40],  // anchor bottom middle
+          popupAnchor: [0, -35]
+        });
+
+        const marker = L.marker([lat, lng], { icon: icon });
+        marker.bindPopup(makePopup(props, '0.0'), { maxWidth: 320 });
         marker.addTo(group);
       });
       
