@@ -46,8 +46,8 @@
         "date": "2026-04-13",
         "heure_debut": "",
         "heure_fin": "",
-        "temps_trajet": "45 min",
-        "distance": "30.5 km",
+        "temps_trajet": "",
+        "distance": "",
         "transport": "Taxi",
         "carte": "",
         "reservation": true,
@@ -102,7 +102,7 @@
         "date": "2026-04-14",
         "heure_debut": "09:00",
         "heure_fin": "09:45",
-        "temps_trajet": "5 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -130,7 +130,7 @@
         "date": "2026-04-14",
         "heure_debut": "10:00",
         "heure_fin": "11:45",
-        "temps_trajet": "5 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "Aucune",
@@ -158,7 +158,7 @@
         "date": "2026-04-14",
         "heure_debut": "11:45",
         "heure_fin": "12:00",
-        "temps_trajet": "4 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -186,7 +186,7 @@
         "date": "2026-04-14",
         "heure_debut": "12:00",
         "heure_fin": "13:00",
-        "temps_trajet": "2 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -214,7 +214,7 @@
         "date": "2026-04-14",
         "heure_debut": "13:00",
         "heure_fin": "13:45",
-        "temps_trajet": "2 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "Roma",
@@ -242,7 +242,7 @@
         "date": "2026-04-14",
         "heure_debut": "14:00",
         "heure_fin": "14:45",
-        "temps_trajet": "4 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -270,7 +270,7 @@
         "date": "2026-04-14",
         "heure_debut": "15:00",
         "heure_fin": "15:30",
-        "temps_trajet": "3 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -298,7 +298,7 @@
         "date": "2026-04-14",
         "heure_debut": "16:00",
         "heure_fin": "16:45",
-        "temps_trajet": "30 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -326,7 +326,7 @@
         "date": "2026-04-14",
         "heure_debut": "17:00",
         "heure_fin": "19:00",
-        "temps_trajet": "6 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "Roma",
@@ -359,10 +359,10 @@
         "transport": "",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.osteriadafortunata.it/",
         "priorite": "basse",
         "ordre": "2.10",
-        "commentaire": ""
+        "commentaire": "Adresse : Via del Governo Vecchio, 114, 00186 Roma RM, Italie"
       }
     },
     {
@@ -410,7 +410,7 @@
         "date": "2026-04-15",
         "heure_debut": "08:40",
         "heure_fin": "09:00",
-        "temps_trajet": "20 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -438,7 +438,7 @@
         "date": "2026-04-15",
         "heure_debut": "09:00",
         "heure_fin": "09:30",
-        "temps_trajet": "20 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -466,7 +466,7 @@
         "date": "2026-04-15",
         "heure_debut": "09:30",
         "heure_fin": "11:00",
-        "temps_trajet": "15 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "Omnia",
@@ -494,7 +494,7 @@
         "date": "2026-04-15",
         "heure_debut": "11:00",
         "heure_fin": "11:30",
-        "temps_trajet": "0 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "Omnia",
@@ -522,7 +522,7 @@
         "date": "2026-04-15",
         "heure_debut": "11:30",
         "heure_fin": "13:00",
-        "temps_trajet": "0 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "Omnia",
@@ -614,7 +614,7 @@
         "url": "https://segretoristorante.com/",
         "priorite": "basse",
         "ordre": "3.7",
-        "commentaire": ""
+        "commentaire": "Adresse : Via Candia, 71, 00192 Rome"
       }
     },
     {
@@ -634,7 +634,7 @@
         "date": "2026-04-15",
         "heure_debut": "",
         "heure_fin": "",
-        "temps_trajet": "30 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -690,7 +690,7 @@
         "date": "2026-04-16",
         "heure_debut": "09:00",
         "heure_fin": "11:00",
-        "temps_trajet": "30 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "Roma",
@@ -802,7 +802,7 @@
         "date": "2026-04-16",
         "heure_debut": "15:00",
         "heure_fin": "17:00",
-        "temps_trajet": "3 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "Roma",
@@ -818,27 +818,27 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          12.4769,
-          41.8984
+          12.4723,
+          41.8959
         ]
       },
       "properties": {
-        "name": "[Dîner] Osteria da Fortunata",
+        "name": "[Dîner] Roscioli Salumeria con Cucina",
         "description": "Visite prévue le Jeudi 2026-04-16 de 19:00 à 21:00",
         "prix": 0,
         "duree": "0 days 02:00:00",
         "date": "2026-04-16",
         "heure_debut": "19:00",
         "heure_fin": "21:00",
-        "temps_trajet": "15 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.salumeriaroscioli.com/",
         "priorite": "basse",
         "ordre": "4.6",
-        "commentaire": ""
+        "commentaire": "Adresse : Via dei Giubbonari, 21/22, 00186 Roma RM, Italie"
       }
     },
     {
@@ -886,7 +886,7 @@
         "date": "2026-04-17",
         "heure_debut": "09:15",
         "heure_fin": "09:30",
-        "temps_trajet": "5 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -975,10 +975,10 @@
         "transport": "Marche",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.trattoriamontiroma.it/",
         "priorite": "basse",
         "ordre": "5.3",
-        "commentaire": ""
+        "commentaire": "Adresse : Via Urbana, 130, 00184 Roma RM, Italie"
       }
     },
     {
@@ -998,7 +998,7 @@
         "date": "2026-04-17",
         "heure_debut": "13:00",
         "heure_fin": "15:30",
-        "temps_trajet": "10 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -1026,7 +1026,7 @@
         "date": "2026-04-17",
         "heure_debut": "15:30",
         "heure_fin": "16:00",
-        "temps_trajet": "1 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -1054,7 +1054,7 @@
         "date": "2026-04-17",
         "heure_debut": "16:00",
         "heure_fin": "16:15",
-        "temps_trajet": "2 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -1110,7 +1110,7 @@
         "date": "2026-04-17",
         "heure_debut": "19:00",
         "heure_fin": "22:00",
-        "temps_trajet": "5 min",
+        "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
@@ -1118,7 +1118,7 @@
         "url": "https://www.trattorialuzzi.com/",
         "priorite": "basse",
         "ordre": "5.8",
-        "commentaire": "Via di San Giovanni in Laterano, 88, 00184 Roma RM, Italie"
+        "commentaire": "Adresse : Via di San Giovanni in Laterano, 88, 00184 Roma RM, Italie"
       }
     },
     {
@@ -1182,8 +1182,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          12.250808,
-          41.802916
+          12.23915,
+          41.8003
         ]
       },
       "properties": {
