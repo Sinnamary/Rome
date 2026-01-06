@@ -51,7 +51,7 @@
         "transport": "Taxi",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": "Le taxi est prévu par notre hôte"
@@ -79,7 +79,7 @@
         "transport": "",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""
@@ -387,7 +387,7 @@
         "transport": "",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""
@@ -415,7 +415,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""
@@ -639,7 +639,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""
@@ -667,7 +667,7 @@
         "transport": "",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""
@@ -863,7 +863,7 @@
         "transport": "",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""
@@ -891,7 +891,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""
@@ -1143,7 +1143,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""
@@ -1171,7 +1171,7 @@
         "transport": "",
         "carte": "",
         "reservation": true,
-        "url": "",
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
         "priorite": "moyenne",
         "ordre": "0.0",
         "commentaire": ""

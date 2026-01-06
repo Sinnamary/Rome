@@ -1252,7 +1252,8 @@
       });
 
       // Regrouper les hébergements (ordre 0.0) en un seul point unique
-      const hebergementMap = new Map();
+      // D'abord, collecter toutes les features par emplacement
+      const hebergementByCoord = new Map();
       hebergementFeatures.forEach(function(item) {
         const f = item.f;
         const coords = f.geometry && f.geometry.type === 'Point' ? f.geometry.coordinates : null;
@@ -1261,16 +1262,47 @@
         const lat = coords[1];
         const coordKey = lat.toFixed(6) + ',' + lng.toFixed(6);
         
-        // Regrouper par coordonnées (un seul point d'hébergement par emplacement)
-        if (!hebergementMap.has(coordKey)) {
-          // Prendre la première feature trouvée pour cet emplacement
-          hebergementMap.set(coordKey, {
-            f: f,
-            lat: lat,
-            lng: lng,
-            props: f.properties || {}
-          });
+        if (!hebergementByCoord.has(coordKey)) {
+          hebergementByCoord.set(coordKey, []);
         }
+        hebergementByCoord.get(coordKey).push(f);
+      });
+      
+      // Pour chaque emplacement, trouver la première feature avec un lien, sinon prendre la première
+      const hebergementMap = new Map();
+      hebergementByCoord.forEach(function(features, coordKey) {
+        // Chercher la première feature avec un URL non vide
+        let selectedFeature = features[0];
+        let foundUrl = false;
+        for (let i = 0; i < features.length; i++) {
+          const props = features[i].properties || {};
+          const url = props.url;
+          // Vérifier si l'URL existe et n'est pas vide (gérer null, undefined, chaîne vide)
+          if (url !== null && url !== undefined && String(url).trim() !== '') {
+            selectedFeature = features[i];
+            foundUrl = true;
+            break;
+          }
+        }
+        
+        const coords = selectedFeature.geometry && selectedFeature.geometry.type === 'Point' ? selectedFeature.geometry.coordinates : null;
+        if (!coords) return;
+        const lng = coords[0];
+        const lat = coords[1];
+        
+        // S'assurer que les propriétés incluent bien l'URL si elle a été trouvée
+        const finalProps = selectedFeature.properties || {};
+        // Si on a trouvé une feature avec URL, s'assurer que l'URL est bien dans les propriétés
+        if (foundUrl && finalProps.url) {
+          // L'URL est déjà dans finalProps, pas besoin de modification
+        }
+        
+        hebergementMap.set(coordKey, {
+          f: selectedFeature,
+          lat: lat,
+          lng: lng,
+          props: finalProps
+        });
       });
 
       const group = L.featureGroup();
