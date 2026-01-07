@@ -678,19 +678,13 @@
         // Coordonnées des arrêts du bus hop-on hop-off
         const routeCoordinates = [
           [41.9019, 12.5018],
+          [41.8974, 12.4986],
           [41.8902, 12.4922],
           [41.886, 12.4858],
-          [41.8884, 12.4819],
-          [41.8955, 12.4723],
-          [41.8992, 12.4731],
-          [41.8986, 12.4768],
-          [41.9009, 12.4833],
-          [41.906, 12.4823],
-          [41.9142, 12.4869],
-          [41.9106, 12.4762],
-          [41.9065, 12.4534],
-          [41.9022, 12.4539],
-          [41.9031, 12.4663]
+          [41.8957, 12.4822],
+          [41.9022, 12.4534],
+          [41.9075, 12.4835],
+          [41.9036, 12.4886]
         ];
         
         // Créer la polyline du parcours
@@ -706,7 +700,7 @@
           '<h3 style="margin: 0 0 10px 0; color: #ff6b35;">🚌 Bus Hop-On Hop-Off</h3>' +
           '<p style="margin: 5px 0;"><strong>Parcours touristique de Rome</strong></p>' +
           '<p style="margin: 5px 0; font-size: 0.9em; color: #666;">' +
-          '14 arrêts principaux</p>' +
+          '8 arrêts principaux</p>' +
           '<p style="margin: 5px 0; font-size: 0.85em; color: #888;">' +
           'Cliquez sur les marqueurs pour voir les arrêts</p>' +
           '</div>';
@@ -721,115 +715,67 @@
         // Définir les arrêts
         const stops = [
           {
-            name: "Termini Station",
+            name: "Termini Railway Station",
             lat: 41.9019,
             lon: 12.5018,
-            description: "Gare principale de Rome - Point de départ principal",
+            description: "Gare principale de Rome - Via Giovanni Giolitti, 32 - Point de départ principal",
             order: 1,
+            note: ""
+          },
+          {
+            name: "Basilica Santa Maria Maggiore",
+            lat: 41.8974,
+            lon: 12.4986,
+            description: "Basilique Sainte-Marie-Majeure - Piazza dell\'Esquilino, 14 - Une des quatre basiliques majeures de Rome",
+            order: 2,
             note: ""
           },
           {
             name: "Colosseum",
             lat: 41.8902,
             lon: 12.4922,
-            description: "Colisée - Amphithéâtre Flavien",
-            order: 2,
-            note: ""
-          },
-          {
-            name: "Circus Maximus",
-            lat: 41.886,
-            lon: 12.4858,
-            description: "Cirque Maxime - Ancien stade romain",
+            description: "Colisée - Via di San Gregorio (arrêt de bus en face de l\'entrée du Forum Romain) - Amphithéâtre Flavien",
             order: 3,
             note: ""
           },
           {
-            name: "Bocca della Verità",
-            lat: 41.8884,
-            lon: 12.4819,
-            description: "Bouche de la Vérité",
+            name: "Circo Massimo",
+            lat: 41.886,
+            lon: 12.4858,
+            description: "Cirque Maxime - Piazzale Ugo La Malfa - Ancien stade romain",
             order: 4,
             note: ""
           },
           {
-            name: "Campo de' Fiori",
-            lat: 41.8955,
-            lon: 12.4723,
-            description: "Campo de\' Fiori - Marché et place historique",
+            name: "Piazza Venezia",
+            lat: 41.8957,
+            lon: 12.4822,
+            description: "Place de Venise - Via di Teatro Marcello - Place principale avec le monument à Victor-Emmanuel II",
             order: 5,
             note: ""
           },
           {
-            name: "Piazza Navona",
-            lat: 41.8992,
-            lon: 12.4731,
-            description: "Place Navone - Place baroque",
+            name: "Vatican",
+            lat: 41.9022,
+            lon: 12.4534,
+            description: "Vatican - Lungotevere Tor di Nona, 7 - Musées du Vatican et Basilique Saint-Pierre",
             order: 6,
             note: ""
           },
           {
-            name: "Pantheon",
-            lat: 41.8986,
-            lon: 12.4768,
-            description: "Panthéon - Temple romain",
+            name: "Ludovisi / Spanish Steps",
+            lat: 41.9075,
+            lon: 12.4835,
+            description: "Ludovisi / Spanish Steps - Via Ludovisi, 73 - Escalier de la Trinité-des-Monts",
             order: 7,
             note: ""
           },
           {
-            name: "Trevi Fountain",
-            lat: 41.9009,
-            lon: 12.4833,
-            description: "Fontaine de Trevi",
+            name: "Piazza Barberini / Spanish Steps",
+            lat: 41.9036,
+            lon: 12.4886,
+            description: "Piazza Barberini / Spanish Steps - Via Barberini, 12 - Place avec la fontaine du Triton",
             order: 8,
-            note: ""
-          },
-          {
-            name: "Spanish Steps",
-            lat: 41.906,
-            lon: 12.4823,
-            description: "Escalier de la Trinité-des-Monts",
-            order: 9,
-            note: ""
-          },
-          {
-            name: "Villa Borghese",
-            lat: 41.9142,
-            lon: 12.4869,
-            description: "Villa Borghèse - Parc et musées",
-            order: 10,
-            note: ""
-          },
-          {
-            name: "Piazza del Popolo",
-            lat: 41.9106,
-            lon: 12.4762,
-            description: "Place du Peuple",
-            order: 11,
-            note: ""
-          },
-          {
-            name: "Vatican Museums",
-            lat: 41.9065,
-            lon: 12.4534,
-            description: "Musées du Vatican",
-            order: 12,
-            note: ""
-          },
-          {
-            name: "St. Peter's Basilica",
-            lat: 41.9022,
-            lon: 12.4539,
-            description: "Basilique Saint-Pierre",
-            order: 13,
-            note: ""
-          },
-          {
-            name: "Castel Sant'Angelo",
-            lat: 41.9031,
-            lon: 12.4663,
-            description: "Château Saint-Ange",
-            order: 14,
             note: ""
           }
         ];
@@ -1001,7 +947,7 @@
     }
 
     // ✅ URL du fichier GeoJSON sur GitHub
-    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-06.geojson";
+    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-07.geojson";
 
     // Déclarer map dans le scope global pour éviter les erreurs de référence
     let map;
@@ -1221,34 +1167,179 @@
         }
       });
 
-      // Détecter et gérer les points superposés (mêmes coordonnées) pour les points normaux
-      const coordMap = new Map();
-      const offsetNormalFeatures = normalFeatures.map(function(item) {
+      // Fonction pour calculer la distance entre deux points (degrés)
+      function distanceDegrees(lat1, lng1, lat2, lng2) {
+        const dLat = lat2 - lat1;
+        const dLng = lng2 - lng1;
+        return Math.sqrt(dLat * dLat + dLng * dLng);
+      }
+      
+      // Fonction pour obtenir le score de priorité d'un point (plus élevé = plus prioritaire)
+      function getPriorityScore(props) {
+        const priorite = String(props.priorite || '').toLowerCase().trim();
+        let score = 0;
+        // Priorité : haute=3, moyenne=2, basse=1, défaut=0
+        if (priorite === 'haute') score = 3;
+        else if (priorite === 'moyenne') score = 2;
+        else if (priorite === 'basse') score = 1;
+        // Présence d'URL : +1
+        const url = props.url;
+        if (url !== null && url !== undefined && String(url).trim() !== '') {
+          score += 1;
+        }
+        return score;
+      }
+      
+      // Détecter et gérer les points proches pour les points normaux
+      const proximityThreshold = 0.0005;
+      const preferPriority = true;
+      const DEBUG_MODE = false; // Logs DEBUG uniquement en version locale
+      
+      // Préparer les données avec coordonnées
+      const featuresWithCoords = normalFeatures.map(function(item) {
         const f = item.f;
         const num = item.num;
         const i = item.i;
         const coords = f.geometry && f.geometry.type === 'Point' ? f.geometry.coordinates : null;
-        if (!coords) return { f: f, num: num, i: i, lat: null, lng: null };
+        if (!coords) return { f: f, num: num, i: i, lat: null, lng: null, props: {}, isPreferred: false };
         const lng = coords[0];
         const lat = coords[1];
-        const coordKey = lat.toFixed(6) + ',' + lng.toFixed(6);
+        const props = f.properties || {};
+        return { f: f, num: num, i: i, lat: lat, lng: lng, originalLat: lat, originalLng: lng, props: props, isPreferred: false };
+      }).filter(function(item) { return item.lat !== null && item.lng !== null; });
+      
+      // Grouper les points par proximité
+      const processedFeatures = [];
+      const processedIndices = new Set();
+      
+      for (let i = 0; i < featuresWithCoords.length; i++) {
+        if (processedIndices.has(i)) continue;
         
-        // Compter combien de points ont ces coordonnées
-        const count = coordMap.get(coordKey) || 0;
-        coordMap.set(coordKey, count + 1);
+        const current = featuresWithCoords[i];
+        const closePoints = [current];
         
-        // Si plusieurs points ont les mêmes coordonnées, les décaler légèrement
-        let offsetLat = lat;
-        let offsetLng = lng;
-        if (count > 0) {
-          // Décalage en spirale : chaque point est décalé de ~50m
-          const angle = (count * 60) * (Math.PI / 180); // 60 degrés entre chaque point
-          const offset = 0.0005 * count; // ~50m par niveau
-          offsetLat = lat + offset * Math.cos(angle);
-          offsetLng = lng + offset * Math.sin(angle);
+        // Trouver tous les points proches de celui-ci
+        for (let j = i + 1; j < featuresWithCoords.length; j++) {
+          if (processedIndices.has(j)) continue;
+          
+          const other = featuresWithCoords[j];
+          const dist = distanceDegrees(current.lat, current.lng, other.lat, other.lng);
+          
+          if (dist <= proximityThreshold) {
+            closePoints.push(other);
+          }
         }
         
-        return { f: f, num: num, i: i, lat: offsetLat, lng: offsetLng, originalLat: lat, originalLng: lng };
+        // Si un seul point, pas de décalage nécessaire
+        if (closePoints.length === 1) {
+          current.isPreferred = false; // Point isolé, pas de priorisation nécessaire
+          processedFeatures.push(current);
+          processedIndices.add(current.i);
+        } else {
+          // Plusieurs points proches : déterminer lequel privilégier
+          if (DEBUG_MODE) {
+            console.log(`[DEBUG] Groupe de ${closePoints.length} points proches détecté (distance < ${proximityThreshold}) : ${closePoints.map(p => p.num).join(', ')}`);
+          }
+          let preferredIndex = 0;
+          
+          if (preferPriority) {
+            // Trier par score de priorité décroissant, puis par index croissant
+            if (DEBUG_MODE) {
+              closePoints.forEach(function(p) {
+                const score = getPriorityScore(p.props);
+                const priorite = p.props.priorite || 'défaut';
+                const hasUrl = p.props.url && String(p.props.url).trim() !== '';
+                console.log(`[DEBUG] Point ${p.num} (index ${p.i}) - Priorité: ${priorite}, Score: ${score}, URL: ${hasUrl ? 'oui' : 'non'}`);
+              });
+            }
+            
+            closePoints.sort(function(a, b) {
+              const scoreA = getPriorityScore(a.props);
+              const scoreB = getPriorityScore(b.props);
+              if (scoreB !== scoreA) return scoreB - scoreA; // Plus haut score en premier
+              return a.i - b.i; // Si égal, premier dans le fichier
+            });
+            preferredIndex = 0; // Le premier après tri est le privilégié
+            
+            const preferred = closePoints[preferredIndex];
+            if (DEBUG_MODE) {
+              console.log(`[DEBUG] Point privilégié: ${preferred.num} (index ${preferred.i}) - Score: ${getPriorityScore(preferred.props)}`);
+              closePoints.forEach(function(p, idx) {
+                if (idx !== preferredIndex) {
+                  console.log(`[DEBUG] Point ${p.num} (index ${p.i}) sera décalé car moins prioritaire que ${preferred.num}`);
+                }
+              });
+            }
+          }
+          
+          // Le point privilégié garde ses coordonnées originales
+          const preferred = closePoints[preferredIndex];
+          preferred.isPreferred = true; // Marquer comme privilégié
+          processedFeatures.push(preferred);
+          processedIndices.add(preferred.i);
+          
+          // Les autres points sont décalés en spirale
+          let offsetCount = 1;
+          for (let k = 0; k < closePoints.length; k++) {
+            if (k === preferredIndex) continue;
+            
+            const point = closePoints[k];
+            // Décalage en spirale : chaque point est décalé de ~50m
+            const angle = (offsetCount * 60) * (Math.PI / 180); // 60 degrés entre chaque point
+            const offset = 0.0005 * offsetCount; // ~50m par niveau
+            point.lat = point.originalLat + offset * Math.cos(angle);
+            point.lng = point.originalLng + offset * Math.sin(angle);
+            point.isPreferred = false; // Marquer comme non privilégié (décalé)
+            
+            processedFeatures.push(point);
+            processedIndices.add(point.i);
+            offsetCount++;
+          }
+        }
+      }
+      
+      // Reconstruire avec les points, en séparant privilégiés et décalés
+      const offsetNormalFeatures = [];
+      const preferredFeatures = [];
+      
+      normalFeatures.forEach(function(item) {
+        const processed = processedFeatures.find(function(p) { return p.i === item.i; });
+        let featureData = processed ? {
+          f: processed.f,
+          num: processed.num,
+          i: processed.i,
+          lat: processed.lat,
+          lng: processed.lng,
+          originalLat: processed.originalLat,
+          originalLng: processed.originalLng,
+          isPreferred: processed.isPreferred === true // Utiliser la propriété marquée lors du traitement
+        } : null;
+        
+        if (!featureData) {
+          // Si non trouvé (point sans coordonnées), retourner tel quel
+          const coords = item.f.geometry && item.f.geometry.type === 'Point' ? item.f.geometry.coordinates : null;
+          if (!coords) {
+            offsetNormalFeatures.push({ f: item.f, num: item.num, i: item.i, lat: null, lng: null, isPreferred: false });
+            return;
+          }
+          featureData = {
+            f: item.f,
+            num: item.num,
+            i: item.i,
+            lat: coords[1],
+            lng: coords[0],
+            originalLat: coords[1],
+            originalLng: coords[0],
+            isPreferred: false
+          };
+        }
+        
+        // Séparer les points privilégiés des autres
+        if (featureData.isPreferred && preferPriority) {
+          preferredFeatures.push(featureData);
+        } else {
+          offsetNormalFeatures.push(featureData);
+        }
       });
 
       // Regrouper les hébergements (ordre 0.0) en un seul point unique
@@ -1307,13 +1398,13 @@
 
       const group = L.featureGroup();
 
-      // Ajouter les points normaux
-      offsetNormalFeatures.forEach(function(item) {
+      // Fonction helper pour créer un marqueur
+      function createMarker(item, zIndexOffset) {
         const f = item.f;
         const num = item.num;
         const lat = item.lat;
         const lng = item.lng;
-        if (lat === null || lng === null) return;
+        if (lat === null || lng === null) return null;
         
         const props = f.properties || {};
         const priorite = props.priorite || '';
@@ -1330,8 +1421,33 @@
         });
 
         const marker = L.marker([lat, lng], { icon: icon });
+        if (zIndexOffset) {
+          marker.setZIndexOffset(zIndexOffset);
+        }
         marker.bindPopup(makePopup(props, num), { maxWidth: 320 });
-        marker.addTo(group);
+        return marker;
+      }
+      
+      // Ajouter d'abord les points normaux (décalés ou isolés)
+      offsetNormalFeatures.forEach(function(item) {
+        const marker = createMarker(item, 0);
+        if (marker) {
+          marker.addTo(group);
+        }
+      });
+      
+      // Ajouter ensuite les points privilégiés et les placer au-dessus
+      const PRIORITY_Z_INDEX = 500; // Z-index pour les points privilégiés dans les groupes proches
+      const preferredMarkers = [];
+      preferredFeatures.forEach(function(item) {
+        const marker = createMarker(item, PRIORITY_Z_INDEX);
+        if (marker) {
+          if (DEBUG_MODE) {
+            console.log(`[DEBUG] Point privilégié ${item.num} ajouté avec z-index ${PRIORITY_Z_INDEX}`);
+          }
+          marker.addTo(group);
+          preferredMarkers.push(marker);
+        }
       });
 
       // Ajouter les points d'hébergement (un seul par emplacement)
@@ -1357,6 +1473,25 @@
       
 
       group.addTo(map);
+      
+      // Forcer les points privilégiés à être au-dessus
+      // Dans Leaflet, on doit réorganiser les layers du groupe pour mettre les privilégiés en dernier
+      // Le dernier layer ajouté au groupe sera au-dessus visuellement
+      if (preferredMarkers.length > 0) {
+        preferredMarkers.forEach(function(marker) {
+          // Retirer le marqueur du groupe
+          group.removeLayer(marker);
+          // Le réajouter en dernier (ce qui le place au-dessus)
+          group.addLayer(marker);
+          if (DEBUG_MODE) {
+            const popup = marker.getPopup();
+            const content = popup ? popup.getContent() : '';
+            const numMatch = content.match(/(\d+\.\d+)/);
+            const num = numMatch ? numMatch[0] : '?';
+            console.log(`[DEBUG] Point privilégié ${num} forcé au premier plan en le réajoutant au groupe`);
+          }
+        });
+      }
 
       // Zoom sur l'ensemble des points (avec marge)
       const b = group.getBounds();
