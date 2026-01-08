@@ -1262,15 +1262,23 @@
           
           // Calculer automatiquement l'itinéraire
 
+          // Ne PAS appeler updateInfoPanel ici car calculateRoute() le fera après le calcul
+          // Cela évite les duplications de transport
           this.calculateRoute();
-          // Note: updateInfoPanel sera appelé par calculateRoute après le calcul
-          // Ne pas l'appeler ici pour éviter les duplications
           return;
         }
         
 
-        // Mettre à jour le panneau uniquement avec les noms (sans transport pour éviter les duplications)
-        this.updateInfoPanel();
+        // Mettre à jour le panneau uniquement avec les noms
+        // IMPORTANT : Ne pas mettre à jour le transport ici pour éviter les duplications
+        // Le transport sera mis à jour par calculateRoute() après le calcul de l'itinéraire
+        // ou restera à "—" si aucune route n'est calculée
+        const startName = this.startVisit ? this.startVisit.properties.name : '—';
+        const endName = this.endVisit ? this.endVisit.properties.name : '—';
+        const startNameEl = document.getElementById('routing-start-name');
+        const endNameEl = document.getElementById('routing-end-name');
+        if (startNameEl) startNameEl.textContent = startName;
+        if (endNameEl) endNameEl.textContent = endName;
 
       }
       
@@ -1526,7 +1534,7 @@
               <strong>Temps :</strong> <span id="routing-time">—</span>
             </div>
             <div style="margin: 5px 0;">
-              <strong>Transport :</strong> <span id="routing-transport">—</span>
+              <strong>Transport :</strong> <span id="routing-transport" style="display: inline;">—</span>
             </div>
             <div style="margin-top: 10px;">
               <button id="routing-calculate-btn" class="routing-btn">Calculer</button>
@@ -1600,23 +1608,36 @@
         }
         
         // Afficher le mode de transport
+        // IMPORTANT : Toujours réinitialiser complètement pour éviter les duplications
         if (transportEl) {
-          // Toujours réinitialiser le contenu pour éviter les duplications
+          // Vider COMPLÈTEMENT le contenu AVANT de déterminer le nouveau texte
+          // Cela évite toute concaténation résiduelle
+          transportEl.textContent = '';
+          
           let transportText = '—';
           
-          if (transport) {
-            // Utiliser le transport fourni en paramètre (priorité la plus haute)
-            transportText = transport.charAt(0).toUpperCase() + transport.slice(1).toLowerCase();
-          } else if (this.startVisit || this.endVisit) {
-            // Essayer de déterminer le transport depuis les visites
+          // Priorité 1 : Transport fourni explicitement en paramètre (depuis calculateRoute)
+          // C'est le cas le plus fréquent après le calcul d'un itinéraire
+          if (transport !== null && transport !== undefined && transport !== '') {
+            const transportStr = String(transport).trim();
+            if (transportStr) {
+              transportText = transportStr.charAt(0).toUpperCase() + transportStr.slice(1).toLowerCase();
+            }
+          } 
+          // Priorité 2 : Déterminer depuis les visites (uniquement si aucun transport fourni)
+          // Utilisé uniquement quand on sélectionne départ/arrivée sans calculer de route
+          else if (this.startVisit || this.endVisit) {
             // Priorité : transport de l'arrivée, puis transport du départ, puis 'Marche' par défaut
             const transportFromEnd = this.endVisit ? (this.endVisit.properties.transport || '').trim() : '';
             const transportFromStart = this.startVisit ? (this.startVisit.properties.transport || '').trim() : '';
             const finalTransport = transportFromEnd || transportFromStart || 'Marche';
-            transportText = finalTransport.charAt(0).toUpperCase() + finalTransport.slice(1).toLowerCase();
+            if (finalTransport) {
+              transportText = finalTransport.charAt(0).toUpperCase() + finalTransport.slice(1).toLowerCase();
+            }
           }
           
-          // Mettre à jour le contenu (remplace complètement le texte précédent)
+          // IMPORTANT : Utiliser textContent pour remplacer COMPLÈTEMENT le contenu précédent
+          // Le contenu a déjà été vidé ci-dessus, donc cette assignation remplace tout
           transportEl.textContent = transportText;
         }
       }
