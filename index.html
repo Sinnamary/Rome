@@ -1235,49 +1235,66 @@
         if (this.clickState === 0) {
           // Sélectionner le départ
 
+          // IMPORTANT : Sauvegarder l'ancien marqueur AVANT de le remplacer
+          // pour pouvoir le réinitialiser correctement
+          const previousStartMarker = this.startMarker;
+          
           this.startVisit = feature;
           this.startMarker = marker;
           this.clickState = 1;
 
-          this.updateMarkerStyle(marker, 'start');
+          // Mettre à jour le style (cela réinitialisera l'ancien marqueur si nécessaire)
+          this.updateMarkerStyle(marker, 'start', previousStartMarker);
           console.log("[ROUTING] Départ sélectionné:", feature.properties.name);
         } else {
           // Sélectionner l'arrivée
 
+          // IMPORTANT : Sauvegarder l'ancien marqueur AVANT de le remplacer
+          const previousEndMarker = this.endMarker;
+          
           this.endVisit = feature;
           this.endMarker = marker;
           this.clickState = 0;
 
-          this.updateMarkerStyle(marker, 'end');
+          // Mettre à jour le style (cela réinitialisera l'ancien marqueur si nécessaire)
+          this.updateMarkerStyle(marker, 'end', previousEndMarker);
           console.log("[ROUTING] Arrivée sélectionnée:", feature.properties.name);
           
           // Calculer automatiquement l'itinéraire
 
           this.calculateRoute();
+          // Note: updateInfoPanel sera appelé par calculateRoute après le calcul
+          // Ne pas l'appeler ici pour éviter les duplications
+          return;
         }
         
 
+        // Mettre à jour le panneau uniquement avec les noms (sans transport pour éviter les duplications)
         this.updateInfoPanel();
 
       }
       
-      updateMarkerStyle(marker, type) {
-        // Retirer les styles précédents uniquement pour le type opposé
-        // Si on sélectionne le départ, on réinitialise l'arrivée précédente (si elle existe)
-        // Si on sélectionne l'arrivée, on réinitialise l'arrivée précédente (si elle existe)
-        // MAIS on garde toujours le marqueur de départ visible
+            updateMarkerStyle(marker, type, previousMarker = null) {
+        // Retirer les styles précédents
         if (type === 'start') {
-          // Sélection du départ : réinitialiser l'arrivée précédente si elle existe
+          // Sélection du départ : réinitialiser le départ précédent ET l'arrivée précédente (si elles existent)
+          // Utiliser previousMarker si fourni (plus fiable que this.startMarker qui a déjà été mis à jour)
+          const oldStartMarker = previousMarker !== null ? previousMarker : (this.startMarker && this.startMarker !== marker ? this.startMarker : null);
+          if (oldStartMarker) {
+            this.resetMarkerStyle(oldStartMarker);
+          }
+          // Réinitialiser aussi l'arrivée si elle existe et est différente
           if (this.endMarker && this.endMarker !== marker) {
             this.resetMarkerStyle(this.endMarker);
           }
         } else {
-          // Sélection de l'arrivée : réinitialiser l'arrivée précédente si elle existe
-          // MAIS NE PAS réinitialiser le marqueur de départ - il doit rester visible
-          if (this.endMarker && this.endMarker !== marker) {
-            this.resetMarkerStyle(this.endMarker);
+          // Sélection de l'arrivée : réinitialiser uniquement l'arrivée précédente (si elle existe)
+          // Utiliser previousMarker si fourni (plus fiable que this.endMarker qui a déjà été mis à jour)
+          const oldEndMarker = previousMarker !== null ? previousMarker : (this.endMarker && this.endMarker !== marker ? this.endMarker : null);
+          if (oldEndMarker) {
+            this.resetMarkerStyle(oldEndMarker);
           }
-          // Le marqueur de départ reste visible avec son style "D" vert
+          // Le marqueur de départ reste visible avec son style "D" vert - NE PAS le réinitialiser
         }
         
         // Appliquer le nouveau style
@@ -1314,6 +1331,25 @@
         if (originalIcon) {
           marker.setIcon(originalIcon);
         }
+      }
+      
+      clearSelection() {
+        this.startVisit = null;
+        this.endVisit = null;
+        this.startMarker = null;
+        this.endMarker = null;
+        this.clickState = 0;
+
+        // Retirer l'itinéraire de la carte
+        if (this.routeLayer) {
+          this.map.removeLayer(this.routeLayer);
+          this.routeLayer = null;
+        }
+
+        // Réinitialiser les styles des marqueurs
+        this.visitMarkers.forEach((feature, marker) => {
+          this.resetMarkerStyle(marker);
+        });
       }
       async calculateRoute() {
         if (!this.startVisit || !this.endVisit) {
@@ -1380,6 +1416,7 @@
         const transportLower = (transport || '').toLowerCase().trim();
         return this.OSRM_PROFILES[transportLower] || this.OSRM_PROFILES['default'];
       }
+      
       displayRoute(geometry, distance, duration, transport) {
         // Retirer l'ancien itinéraire si présent
         if (this.routeLayer) {
@@ -1448,6 +1485,7 @@
         const remainingMinutes = minutes % 60;
         return `${hours} h ${remainingMinutes.toString().padStart(2, '0')} min`;
       }
+
       createInfoPanel() {
         // Vérifier si le panneau existe déjà
         let panel = document.getElementById('routing-interactive-panel');
@@ -1563,19 +1601,23 @@
         
         // Afficher le mode de transport
         if (transportEl) {
+          // Toujours réinitialiser le contenu pour éviter les duplications
+          let transportText = '—';
+          
           if (transport) {
-            // Capitaliser la première lettre
-            const transportText = transport.charAt(0).toUpperCase() + transport.slice(1).toLowerCase();
-            transportEl.textContent = transportText;
+            // Utiliser le transport fourni en paramètre (priorité la plus haute)
+            transportText = transport.charAt(0).toUpperCase() + transport.slice(1).toLowerCase();
           } else if (this.startVisit || this.endVisit) {
             // Essayer de déterminer le transport depuis les visites
+            // Priorité : transport de l'arrivée, puis transport du départ, puis 'Marche' par défaut
             const transportFromEnd = this.endVisit ? (this.endVisit.properties.transport || '').trim() : '';
             const transportFromStart = this.startVisit ? (this.startVisit.properties.transport || '').trim() : '';
             const finalTransport = transportFromEnd || transportFromStart || 'Marche';
-            transportEl.textContent = finalTransport.charAt(0).toUpperCase() + finalTransport.slice(1).toLowerCase();
-          } else {
-            transportEl.textContent = '—';
+            transportText = finalTransport.charAt(0).toUpperCase() + finalTransport.slice(1).toLowerCase();
           }
+          
+          // Mettre à jour le contenu (remplace complètement le texte précédent)
+          transportEl.textContent = transportText;
         }
       }
       
@@ -1616,6 +1658,8 @@
       }
       
       clearSelection() {
+        // Utiliser la méthode du MarkerManager
+        // Note: clearSelection est maintenant dans MarkerManagerGenerator
         this.startVisit = null;
         this.endVisit = null;
         this.startMarker = null;
