@@ -1262,12 +1262,22 @@
       }
       
       updateMarkerStyle(marker, type) {
-        // Retirer les styles précédents
-        if (this.startMarker && this.startMarker !== marker) {
-          this.resetMarkerStyle(this.startMarker);
-        }
-        if (this.endMarker && this.endMarker !== marker) {
-          this.resetMarkerStyle(this.endMarker);
+        // Retirer les styles précédents uniquement pour le type opposé
+        // Si on sélectionne le départ, on réinitialise l'arrivée précédente (si elle existe)
+        // Si on sélectionne l'arrivée, on réinitialise l'arrivée précédente (si elle existe)
+        // MAIS on garde toujours le marqueur de départ visible
+        if (type === 'start') {
+          // Sélection du départ : réinitialiser l'arrivée précédente si elle existe
+          if (this.endMarker && this.endMarker !== marker) {
+            this.resetMarkerStyle(this.endMarker);
+          }
+        } else {
+          // Sélection de l'arrivée : réinitialiser l'arrivée précédente si elle existe
+          // MAIS NE PAS réinitialiser le marqueur de départ - il doit rester visible
+          if (this.endMarker && this.endMarker !== marker) {
+            this.resetMarkerStyle(this.endMarker);
+          }
+          // Le marqueur de départ reste visible avec son style "D" vert
         }
         
         // Appliquer le nouveau style
