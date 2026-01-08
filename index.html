@@ -1009,6 +1009,7 @@
         this.startVisit = null;        // Feature GeoJSON de la visite de départ
         this.endVisit = null;          // Feature GeoJSON de la visite d'arrivée
         this.routeLayer = null;        // Calque Leaflet pour l'itinéraire
+        this.routingLayerGroup = null; // Groupe de calques pour le contrôleur (pour la case à cocher)
         this.startMarker = null;       // Marqueur visuel de départ (vert)
         this.endMarker = null;         // Marqueur visuel d'arrivée (rouge)
         this.isActive = false;         // Mode interactif activé/désactivé
@@ -1429,6 +1430,10 @@
         // Retirer l'ancien itinéraire si présent
         if (this.routeLayer) {
           this.map.removeLayer(this.routeLayer);
+          // Retirer aussi du groupe de calques si il existe
+          if (this.routingLayerGroup) {
+            this.routingLayerGroup.removeLayer(this.routeLayer);
+          }
         }
 
         // Créer un nouveau calque GeoJSON
@@ -1445,8 +1450,17 @@
         const popupContent = this.createRoutePopup(distance, duration, transport);
         this.routeLayer.bindPopup(popupContent);
 
-        // Ajouter à la carte
-        this.routeLayer.addTo(this.map);
+        // Ajouter au groupe de calques si il existe (pour que la case à cocher fonctionne)
+        if (this.routingLayerGroup) {
+          this.routingLayerGroup.addLayer(this.routeLayer);
+          // Ajouter le groupe à la carte si ce n'est pas déjà fait
+          if (!this.map.hasLayer(this.routingLayerGroup)) {
+            this.routingLayerGroup.addTo(this.map);
+          }
+        } else {
+          // Sinon, ajouter directement à la carte (comportement par défaut)
+          this.routeLayer.addTo(this.map);
+        }
 
         // Ajuster la vue pour voir l'itinéraire complet
         const bounds = this.routeLayer.getBounds();
@@ -1701,14 +1715,30 @@
       
       addLayerControl(baseLayers, overlayLayers) {
         // Cette méthode sera appelée par RouteLayerManager pour intégrer le calque
+        // dans le contrôleur de calques Leaflet.
+        // 
+        // IMPORTANT : La case à cocher "Routage interactif" dans le contrôleur de calques
+        // contrôle UNIQUEMENT la visibilité de l'itinéraire calculé (la ligne bleue sur la carte).
+        // Elle ne contrôle PAS :
+        // - Le panneau de routage interactif (qui reste toujours visible)
+        // - Le mode interactif (activé/désactivé via le bouton "Activer" dans le panneau)
+        //
+        // Utilité : Permet de masquer/afficher temporairement l'itinéraire calculé
+        // sans avoir à le supprimer ou recalculer.
         const interactiveOverlays = {};
         
+        // Créer un groupe de calques qui contient l'itinéraire
+        const routingLayerGroup = L.layerGroup();
+        
+        // Ajouter l'itinéraire au groupe s'il existe déjà
         if (this.routeLayer) {
-          interactiveOverlays['Routage interactif'] = this.routeLayer;
-        } else {
-          // Créer un groupe vide pour que le calque apparaisse dans la liste
-          interactiveOverlays['Routage interactif'] = L.layerGroup();
+          routingLayerGroup.addLayer(this.routeLayer);
         }
+        
+        // Stocker une référence au groupe pour pouvoir y ajouter l'itinéraire plus tard
+        this.routingLayerGroup = routingLayerGroup;
+        
+        interactiveOverlays['Routage interactif'] = routingLayerGroup;
         
         return interactiveOverlays;
       }
