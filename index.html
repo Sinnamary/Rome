@@ -1160,36 +1160,29 @@
         // Créer un écouteur qui intercepte le clic en mode interactif
         const self = this;
         const clickHandler = function(e) {
-          console.log("[ROUTING DEBUG] clickHandler appelé, isActive:", self.isActive);
 
           if (self.isActive) {
-            console.log("[ROUTING DEBUG] Mode actif, traitement du clic...");
 
             // Empêcher complètement l'événement de se propager
             L.DomEvent.stopPropagation(e);
             L.DomEvent.preventDefault(e);
-            console.log("[ROUTING DEBUG] Événement stoppé");
 
             
             // Dans Leaflet, 'this' dans le handler fait référence au marqueur
             const clickedMarker = this;
-            console.log("[ROUTING DEBUG] Marqueur cliqué:", clickedMarker);
 
             
             const feature = self.visitMarkers.get(clickedMarker);
-            console.log("[ROUTING DEBUG] Feature trouvée:", feature ? feature.properties.name : "NON TROUVÉE");
             if (feature) {
               console.log("[ROUTING] Clic détecté sur:", feature.properties.name);
 
               self.selectVisit(feature, clickedMarker);
             } else {
               console.warn("[ROUTING] Feature non trouvée pour le marqueur cliqué");
-              console.log("[ROUTING DEBUG] Marqueurs enregistrés:", self.visitMarkers.size);
 
             }
             return false;
           } else {
-            console.log("[ROUTING DEBUG] Mode non actif, clic ignoré");
 
           }
         };
