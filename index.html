@@ -863,7 +863,7 @@
           this.stopMarkers.push(marker);
         });
         
-        console.log("[HOPONHOPOFF] " + this.stopMarkers.length + " arrêt(s) créé(s)");
+
         return this.stopMarkers;
       }
       clearRoute() {
@@ -951,14 +951,14 @@
     function initHopOnHopOffManager(map) {
       if (!hopOnHopOffManager) {
         hopOnHopOffManager = new HopOnHopOffLayerManager(map);
-        console.log("[HOPONHOPOFF] Gestionnaire hop-on hop-off initialisé");
+
       }
       return hopOnHopOffManager;
     }
     function processHopOnHopOff() {
       // Vérifier que map existe avant d'essayer de l'utiliser
       if (typeof map === 'undefined') {
-        console.warn("[HOPONHOPOFF] La carte n'est pas encore initialisée");
+
         return;
       }
       
@@ -978,7 +978,7 @@
       const overlayLayers = {};
       hopOnHopOffManager.addLayerControl(baseLayers, overlayLayers);
       
-      console.log("[HOPONHOPOFF] Calque hop-on hop-off créé (masqué par défaut)");
+
     }    
     // ============================================================
     // FIN DU MODULE HOP-ON HOP-OFF
@@ -987,7 +987,7 @@
     // Intégration du calque hop-on hop-off
     function integrateHopOnHopOff() {
       if (typeof map === 'undefined') {
-        console.warn("[HOPONHOPOFF] La carte n'est pas encore initialisée, attente...");
+
         setTimeout(() => integrateHopOnHopOff(), 100);
         return;
       }
@@ -1062,7 +1062,7 @@
         // Mettre à jour l'interface
         this.updateInfoPanel();
         
-        console.log("[ROUTING] Mode interactif activé - " + this.visitMarkers.size + " marqueurs enregistrés");
+
       }
       
       deactivate() {
@@ -1104,7 +1104,7 @@
           }
         }
         
-        console.log("[ROUTING] Mode interactif désactivé");
+
       }
       registerVisitMarker(marker, feature) {
 
@@ -1126,7 +1126,7 @@
         // Note: Si le mode est activé plus tard, attachClickListeners() sera appelé
         // et attachera les écouteurs à tous les marqueurs enregistrés
         
-        console.log("[ROUTING] Marqueur enregistré:", feature.properties.name, "- Total:", this.visitMarkers.size);
+
       }
       
       attachMarkerListener(marker) {
@@ -1175,11 +1175,11 @@
             
             const feature = self.visitMarkers.get(clickedMarker);
             if (feature) {
-              console.log("[ROUTING] Clic détecté sur:", feature.properties.name);
+
 
               self.selectVisit(feature, clickedMarker);
             } else {
-              console.warn("[ROUTING] Feature non trouvée pour le marqueur cliqué");
+
 
             }
             return false;
@@ -1246,7 +1246,7 @@
 
           // Mettre à jour le style (cela réinitialisera l'ancien marqueur si nécessaire)
           this.updateMarkerStyle(marker, 'start', previousStartMarker);
-          console.log("[ROUTING] Départ sélectionné:", feature.properties.name);
+
         } else {
           // Sélectionner l'arrivée
 
@@ -1259,7 +1259,7 @@
 
           // Mettre à jour le style (cela réinitialisera l'ancien marqueur si nécessaire)
           this.updateMarkerStyle(marker, 'end', previousEndMarker);
-          console.log("[ROUTING] Arrivée sélectionnée:", feature.properties.name);
+
           
           // Calculer automatiquement l'itinéraire
 
@@ -1362,7 +1362,7 @@
       }
       async calculateRoute() {
         if (!this.startVisit || !this.endVisit) {
-          console.warn("[ROUTING] Départ ou arrivée manquant");
+
           return;
         }
 
@@ -1387,7 +1387,7 @@
           const baseUrl = this.OSRM_BASE_URL.replace('{profile}', profile);
           const url = `${baseUrl}/route/v1/${profile}/${startLng},${startLat};${endLng},${endLat}?overview=full&geometries=geojson&steps=false`;
 
-          console.log("[ROUTING] Calcul de l'itinéraire:", url);
+
 
           // Appeler l'API OSRM
           const response = await fetch(url, { cache: 'no-store' });
@@ -1415,7 +1415,7 @@
           this.updateInfoPanel(distance, duration, transport);
 
         } catch (error) {
-          console.error("[ROUTING] Erreur lors du calcul:", error);
+
           this.showError('Impossible de calculer l\'itinéraire : ' + error.message);
           this.showLoading(false);
         }
@@ -1666,10 +1666,10 @@
         }
       }
       
-      showError(message) {
+      showError(message) {{
         alert(message);
-        console.error("[ROUTING]", message);
-      }
+{self._debug_error('message')}
+      }}
       swapVisits() {
         const tmp = this.startVisit;
         this.startVisit = this.endVisit;
@@ -1753,14 +1753,14 @@
     function initInteractiveRouting(map) {
       if (!interactiveRoutingManager) {
         interactiveRoutingManager = new InteractiveRoutingManager(map);
-        console.log("[ROUTING] Gestionnaire de routage interactif initialisé");
+
       }
       return interactiveRoutingManager;
     }
     
     function integrateInteractiveRouting(features) {
       if (typeof map === 'undefined') {
-        console.warn("[ROUTING] La carte n'est pas encore initialisée, attente...");
+
         setTimeout(() => integrateInteractiveRouting(features), 100);
         return;
       }
@@ -1777,7 +1777,7 @@
       // Enregistrer les marqueurs de visites après leur création
       // Cette fonction sera appelée depuis processGeoJSON après la création des marqueurs
       // Note: Il faut que les marqueurs soient créés avant d'appeler cette fonction
-      console.log("[ROUTING] Intégration du routage interactif - " + features.length + " visites disponibles");
+
     }
     
     // Fonction helper pour enregistrer un marqueur de visite
@@ -1796,7 +1796,7 @@
     }
 
     // ✅ URL du fichier GeoJSON sur GitHub
-    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-08.geojson";
+    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-01-09.geojson";
 
     // Déclarer map dans le scope global pour éviter les erreurs de référence
     let map;
@@ -1995,14 +1995,14 @@
     function initInteractiveRouting(map) {
       if (!interactiveRoutingManager) {
         interactiveRoutingManager = new InteractiveRoutingManager(map);
-        console.log("[ROUTING] Gestionnaire de routage interactif initialisé");
+
       }
       return interactiveRoutingManager;
     }
     
     function integrateInteractiveRouting(features) {
       if (typeof map === 'undefined') {
-        console.warn("[ROUTING] La carte n'est pas encore initialisée, attente...");
+
         setTimeout(() => integrateInteractiveRouting(features), 100);
         return;
       }
@@ -2019,7 +2019,7 @@
       // Enregistrer les marqueurs de visites après leur création
       // Cette fonction sera appelée depuis processGeoJSON après la création des marqueurs
       // Note: Il faut que les marqueurs soient créés avant d'appeler cette fonction
-      console.log("[ROUTING] Intégration du routage interactif - " + features.length + " visites disponibles");
+
     }
     
     // Fonction helper pour enregistrer un marqueur de visite
