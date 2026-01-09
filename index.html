@@ -517,7 +517,7 @@
         const pointsByDay = this.groupPointsByDay(features);
         
         if (pointsByDay.size === 0) {
-          console.log("[ROUTES] Aucun point valide trouvé pour créer les calques de points");
+
           return;
         }
         
@@ -537,7 +537,7 @@
           });
         });
         
-        console.log("[ROUTES] " + this.pointLayers.size + " calque(s) de points créé(s)");
+
       }
       
       createRouteLayers(features) {
@@ -545,7 +545,7 @@
         const pointsByDay = this.groupPointsByDay(features);
         
         if (pointsByDay.size === 0) {
-          console.log("[ROUTES] Aucun point valide trouvé pour créer les trajets");
+
           return;
         }
         
@@ -568,7 +568,7 @@
           });
         });
         
-        console.log("[ROUTES] " + this.routeLayers.size + " calque(s) de trajet créé(s)");
+
       }
       clearPointLayers() {
         this.pointLayers.forEach((pointData, day) => {
@@ -656,7 +656,7 @@
     function initRouteManager(map) {
       if (!routeManager) {
         routeManager = new RouteLayerManager(map);
-        console.log("[ROUTES] Gestionnaire de routes initialisé");
+
       }
       return routeManager;
     }
@@ -665,7 +665,7 @@
         if (typeof map !== 'undefined') {
           routeManager = initRouteManager(map);
         } else {
-          console.warn("[ROUTES] La carte n'est pas encore initialisée");
+
           return;
         }
       }
@@ -687,8 +687,7 @@
         map.removeLayer(layer);
       });
       
-      console.log("[ROUTES] " + layersToRemove.length + " groupe(s) de marqueurs supprimé(s)");
-      
+
       routeManager.createPointLayers(features);
       routeManager.createRouteLayers(features);
       
@@ -704,7 +703,7 @@
     
     function integrateRoutes(features) {
       if (typeof map === 'undefined') {
-        console.warn("[ROUTES] La carte n'est pas encore initialisée, attente...");
+
         setTimeout(() => integrateRoutes(features), 100);
         return;
       }
@@ -1972,7 +1971,7 @@
       processGeoJSON(gj);
     function integrateRoutes(features) {
       if (typeof map === 'undefined') {
-        console.warn("[ROUTES] La carte n'est pas encore initialisée, attente...");
+
         setTimeout(() => integrateRoutes(features), 100);
         return;
       }
