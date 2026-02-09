@@ -1,0 +1,985 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.2389,
+          41.8003
+        ]
+      },
+      "properties": {
+        "name": "Aéroport Léonard de Vinci-Fiumicino",
+        "description": "Visite prévue le Lundi 2026-04-13",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-13",
+        "heure_debut": "",
+        "heure_fin": "",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "",
+        "carte": "",
+        "reservation": true,
+        "url": "https://wwws.airfrance.fr/",
+        "priorite": "moyenne",
+        "ordre": "1.1",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Lundi 2026-04-13",
+        "prix": 85,
+        "duree": "",
+        "date": "2026-04-13",
+        "heure_debut": "",
+        "heure_fin": "",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Taxi",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": "Le taxi est prévu par notre hôte"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Mardi 2026-04-14 de 09:00 à 09:05",
+        "prix": 0,
+        "duree": "0:05:00",
+        "date": "2026-04-14",
+        "heure_debut": "09:00",
+        "heure_fin": "09:05",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4833,
+          41.9009
+        ]
+      },
+      "properties": {
+        "name": "Fontana di Trevi",
+        "description": "Visite prévue le Mardi 2026-04-14 de 09:05 à 09:20",
+        "prix": 2,
+        "duree": "0:15:00",
+        "date": "2026-04-14",
+        "heure_debut": "09:05",
+        "heure_fin": "09:20",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://www.partir-a-rome.com/visites-incontournables/fontaine-trevi",
+        "priorite": "moyenne",
+        "ordre": "2.1",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4814,
+          41.8978
+        ]
+      },
+      "properties": {
+        "name": "Palazzo Doria Pamphilj",
+        "description": "Visite prévue le Mardi 2026-04-14 de 09:30 à 11:00",
+        "prix": 17,
+        "duree": "1:30:00",
+        "date": "2026-04-14",
+        "heure_debut": "09:30",
+        "heure_fin": "11:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Aucune",
+        "reservation": true,
+        "url": "https://ticketroma.doriapamphilj.it/en/biglietteria/gallery-ticket/",
+        "priorite": "haute",
+        "ordre": "2.2",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4778,
+          41.8981
+        ]
+      },
+      "properties": {
+        "name": "Piazza della Minerva",
+        "description": "Visite prévue le Mardi 2026-04-14 de 11:15 à 11:30",
+        "prix": 0,
+        "duree": "0:15:00",
+        "date": "2026-04-14",
+        "heure_debut": "11:15",
+        "heure_fin": "11:30",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://www.cityzeum.com/la-place-de-la-minerve",
+        "priorite": "moyenne",
+        "ordre": "2.3",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4731,
+          41.8992
+        ]
+      },
+      "properties": {
+        "name": "Piazza Navona",
+        "description": "Visite prévue le Mardi 2026-04-14 de 11:40 à 12:00",
+        "prix": 0,
+        "duree": "0:20:00",
+        "date": "2026-04-14",
+        "heure_debut": "11:40",
+        "heure_fin": "12:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://bonjourrome.fr/piazza-navona-rome/",
+        "priorite": "moyenne",
+        "ordre": "2.4",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4747,
+          41.9002
+        ]
+      },
+      "properties": {
+        "name": "San Luigi dei Francesi",
+        "description": "Visite prévue le Mardi 2026-04-14 de 13:15 à 13:45",
+        "prix": 0,
+        "duree": "0:30:00",
+        "date": "2026-04-14",
+        "heure_debut": "13:15",
+        "heure_fin": "13:45",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://www.turismoroma.it/fr/places/%C3%A9glise-saint-louis-des-fran%C3%A7ais",
+        "priorite": "moyenne",
+        "ordre": "2.6",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4769,
+          41.8986
+        ]
+      },
+      "properties": {
+        "name": "Panthéon",
+        "description": "Visite prévue le Mardi 2026-04-14 de 14:00 à 14:45",
+        "prix": 5,
+        "duree": "0:45:00",
+        "date": "2026-04-14",
+        "heure_debut": "14:00",
+        "heure_fin": "14:45",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Roma",
+        "reservation": true,
+        "url": "https://portale.museiitaliani.it",
+        "priorite": "haute",
+        "ordre": "2.7",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4986,
+          41.8974
+        ]
+      },
+      "properties": {
+        "name": "Santa Maria Maggiore",
+        "description": "Visite prévue le Mardi 2026-04-14 de 16:15 à 16:45",
+        "prix": 0,
+        "duree": "0:30:00",
+        "date": "2026-04-14",
+        "heure_debut": "16:15",
+        "heure_fin": "16:45",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://romesite.fr/sainte-marie-majeure.html",
+        "priorite": "moyenne",
+        "ordre": "2.8",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.498528,
+          41.901417
+        ]
+      },
+      "properties": {
+        "name": "Musée National Romain - Palazzo Massimo",
+        "description": "Visite prévue le Mardi 2026-04-14 de 17:00 à 19:00",
+        "prix": 15,
+        "duree": "2:00:00",
+        "date": "2026-04-14",
+        "heure_debut": "17:00",
+        "heure_fin": "19:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Roma",
+        "reservation": true,
+        "url": "https://museonazionaleromano.beniculturali.it/en/opening-hours-and-tickets/",
+        "priorite": "haute",
+        "ordre": "2.9",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Mardi 2026-04-14",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-14",
+        "heure_debut": "",
+        "heure_fin": "",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 08:40 à 09:00",
+        "prix": 0,
+        "duree": "0:20:00",
+        "date": "2026-04-15",
+        "heure_debut": "08:40",
+        "heure_fin": "09:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4664,
+          41.9019
+        ]
+      },
+      "properties": {
+        "name": "Pont Saint-Ange",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 09:05 à 09:20",
+        "prix": 0,
+        "duree": "0:15:00",
+        "date": "2026-04-15",
+        "heure_debut": "09:05",
+        "heure_fin": "09:20",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://centresocialhenrimatisse.fr/pont-saint-ange-rome/",
+        "priorite": "moyenne",
+        "ordre": "3.1",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4533578,
+          41.9020352
+        ]
+      },
+      "properties": {
+        "name": "Basilique Saint-Pierre",
+        "description": "Visite prévue le mercredi 2026-04-15 de 10:00 à 11:00",
+        "prix": 0,
+        "duree": "1:00:00",
+        "date": "2026-04-15",
+        "heure_debut": "10:00",
+        "heure_fin": "11:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Omnia",
+        "reservation": true,
+        "url": "https://www.museivaticani.va/content/museivaticani/fr.html",
+        "priorite": "haute",
+        "ordre": "3.3",
+        "commentaire": "Avec visite Dôme"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4545324,
+          41.9030421
+        ]
+      },
+      "properties": {
+        "name": "Chapelle Sixtine",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 11:00 à 11:30",
+        "prix": 0,
+        "duree": "0:30:00",
+        "date": "2026-04-15",
+        "heure_debut": "11:00",
+        "heure_fin": "11:30",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Omnia",
+        "reservation": true,
+        "url": "https://www.museivaticani.va/content/museivaticani/fr.html",
+        "priorite": "haute",
+        "ordre": "3.4",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4504954,
+          41.9042802
+        ]
+      },
+      "properties": {
+        "name": "Galeries du Vatican",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 11:30 à 13:00",
+        "prix": 0,
+        "duree": "1:30:00",
+        "date": "2026-04-15",
+        "heure_debut": "11:30",
+        "heure_fin": "13:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Omnia",
+        "reservation": true,
+        "url": "https://www.museivaticani.va/content/museivaticani/fr.html",
+        "priorite": "haute",
+        "ordre": "3.5",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4533076,
+          41.905941
+        ]
+      },
+      "properties": {
+        "name": "Musées du Vatican",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 14:00 à 17:00",
+        "prix": 0,
+        "duree": "3:00:00",
+        "date": "2026-04-15",
+        "heure_debut": "14:00",
+        "heure_fin": "17:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Omnia",
+        "reservation": true,
+        "url": "https://www.museivaticani.va/content/museivaticani/fr.html",
+        "priorite": "haute",
+        "ordre": "3.7",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4668459,
+          41.8911586
+        ]
+      },
+      "properties": {
+        "name": "Trastevere",
+        "description": "Visite prévue le mercredi 2026-04-15 de 17:30 à 19:00",
+        "prix": 0,
+        "duree": "1:30:00",
+        "date": "2026-04-15",
+        "heure_debut": "17:30",
+        "heure_fin": "19:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "",
+        "priorite": "moyenne",
+        "ordre": "3.8",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Mercredi 2026-04-15",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-15",
+        "heure_debut": "",
+        "heure_fin": "",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 08:30 à 09:00",
+        "prix": 0,
+        "duree": "0:30:00",
+        "date": "2026-04-16",
+        "heure_debut": "08:30",
+        "heure_fin": "09:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4922,
+          41.9142
+        ]
+      },
+      "properties": {
+        "name": "Galleria Borghese",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 09:00 à 11:00",
+        "prix": 0,
+        "duree": "2:00:00",
+        "date": "2026-04-16",
+        "heure_debut": "09:00",
+        "heure_fin": "11:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Roma",
+        "reservation": true,
+        "url": "https://www.ticketone.it/en/artist/galleria-borghese/",
+        "priorite": "haute",
+        "ordre": "4.1",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4772,
+          41.9186
+        ]
+      },
+      "properties": {
+        "name": "Museo Nazionale Etrusco",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 11:30 à 13:00",
+        "prix": 13,
+        "duree": "1:30:00",
+        "date": "2026-04-16",
+        "heure_debut": "11:30",
+        "heure_fin": "13:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Roma",
+        "reservation": true,
+        "url": "https://museoetru.it/en/visiting/tickets/",
+        "priorite": "haute",
+        "ordre": "4.2",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.483,
+          41.8947
+        ]
+      },
+      "properties": {
+        "name": "Altare della Patria",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 14:45 à 15:00",
+        "prix": 0,
+        "duree": "0:15:00",
+        "date": "2026-04-16",
+        "heure_debut": "14:45",
+        "heure_fin": "15:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://www.walksinsiderome.com/fr/tour-attractions/altare-della-patria/",
+        "priorite": "moyenne",
+        "ordre": "4.4",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4828,
+          41.8932
+        ]
+      },
+      "properties": {
+        "name": "Musei Capitolini",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 15:00 à 17:00",
+        "prix": 15,
+        "duree": "2:00:00",
+        "date": "2026-04-16",
+        "heure_debut": "15:00",
+        "heure_fin": "17:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Roma",
+        "reservation": true,
+        "url": "https://www.museicapitolini.org/en/info/biglietti",
+        "priorite": "haute",
+        "ordre": "4.5",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Jeudi 2026-04-16",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-16",
+        "heure_debut": "",
+        "heure_fin": "",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 09:15 à 09:30",
+        "prix": 0,
+        "duree": "0:15:00",
+        "date": "2026-04-17",
+        "heure_debut": "09:15",
+        "heure_fin": "09:30",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4840593,
+          41.8960673
+        ]
+      },
+      "properties": {
+        "name": "Domus Romane – Palazzo Valentini",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 09:30 à 11:00",
+        "prix": 15,
+        "duree": "1:30:00",
+        "date": "2026-04-17",
+        "heure_debut": "09:30",
+        "heure_fin": "11:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Roma",
+        "reservation": true,
+        "url": "https://www.rome-roma.net/domus-romane-du-palazzo-valentini/",
+        "priorite": "haute",
+        "ordre": "5.1",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4907489,
+          41.8897934
+        ]
+      },
+      "properties": {
+        "name": "Arco di Costantino",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 11:15 à 11:45",
+        "prix": 0,
+        "duree": "0:30:00",
+        "date": "2026-04-17",
+        "heure_debut": "11:15",
+        "heure_fin": "11:45",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://colosseo-roma.it/fr/explorer/arc-constantinois/",
+        "priorite": "moyenne",
+        "ordre": "5.2",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4918238,
+          41.8902572
+        ]
+      },
+      "properties": {
+        "name": "Colisée",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 13:00 à 15:00",
+        "prix": 0,
+        "duree": "02:00:00",
+        "date": "2026-04-17",
+        "heure_debut": "13:00",
+        "heure_fin": "15:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.tickets-rome.com/fr/colosseum/plan-your-visit-colosseum/",
+        "priorite": "haute",
+        "ordre": "5.4",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4857729,
+          41.8917917
+        ]
+      },
+      "properties": {
+        "name": "Forum Romain",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 15:00 à 16:00",
+        "prix": 0,
+        "duree": "01:00:00",
+        "date": "2026-04-17",
+        "heure_debut": "15:00",
+        "heure_fin": "16:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.tiqets.com/fr/billets-forum-romain-l146049/",
+        "priorite": "haute",
+        "ordre": "5.5",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4853087,
+          41.8861584
+        ]
+      },
+      "properties": {
+        "name": "Circo Massimo",
+        "description": "Visite prévue le vendredi 2026-04-17 de 16:15 à 16:30",
+        "prix": 0,
+        "duree": "00:15:00",
+        "date": "2026-04-17",
+        "heure_debut": "16:15",
+        "heure_fin": "16:30",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "",
+        "priorite": "moyenne",
+        "ordre": "5.6",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Vendredi 2026-04-17",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-17",
+        "heure_debut": "",
+        "heure_fin": "",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48505,
+          41.90155
+        ]
+      },
+      "properties": {
+        "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
+        "description": "Visite prévue le Samedi 2026-04-18",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-18",
+        "heure_debut": "",
+        "heure_fin": "",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.google.fr/maps/place/Via+in+Arcione,+98,+00187+Roma+RM,+Italie/@41.9016303,12.4852338,3a,75y,311.02h,90t/data=!3m7!1e1!3m5!1s-9FAyZCJzZ_h_FxkaX1laQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3D-9FAyZCJzZ_h_FxkaX1laQ%26yaw%3D311.01794!7i16384!8i8192!4m15!1m8!3m7!1s0x132f61acbf78615f:0x334aea48db28884!2sVia+in+Arcione,+98,+00187+Roma+RM,+Italie!3b1!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v!3m5!1s0x132f61acbf78615f:0x334aea48db28884!8m2!3d41.9016538!4d12.4851975!16s%2Fg%2F11c1zqmc6v?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
+        "priorite": "moyenne",
+        "ordre": "0.0",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.23915,
+          41.8003
+        ]
+      },
+      "properties": {
+        "name": "Aéroport Léonard de Vinci-Fiumicino",
+        "description": "Visite prévue le Samedi 2026-04-18",
+        "prix": 0,
+        "duree": "",
+        "date": "2026-04-18",
+        "heure_debut": "",
+        "heure_fin": "",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Taxi",
+        "carte": "",
+        "reservation": true,
+        "url": "",
+        "priorite": "moyenne",
+        "ordre": "6.1",
+        "commentaire": "Le taxi est prévu par notre hôte"
+      }
+    }
+  ]
+}
