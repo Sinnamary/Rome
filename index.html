@@ -1854,7 +1854,7 @@
     console.log('[DEBUG] typeof L après chargement des scripts:', typeof L);
 
     // ✅ URL du fichier GeoJSON sur GitHub
-    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-02-09.geojson";
+    const GEOJSON_URL = "https://raw.githubusercontent.com/Sinnamary/Rome/main/attractions_rome_2026-02-11.geojson";
 
     // Déclarer map dans le scope global pour éviter les erreurs de référence
     let map;
@@ -1946,6 +1946,17 @@
           }
         });
       }, 2000);
+      
+      // Clic sur la carte : afficher les coordonnées (pour les copier dans l'Excel)
+      map.on('click', function(e) {
+        const lat = e.latlng.lat;
+        const lng = e.latlng.lng;
+        const msg = '<strong>Coordonnées du point cliqué</strong><br>' +
+          'Latitude: ' + lat + '<br>Longitude: ' + lng + '<br><br>' +
+          'Pour Excel (longitude, latitude):<br><code>' + lng + ', ' + lat + '</code><br><br>' +
+          'GeoJSON: [{' + lng + '}, {' + lat + '}]<br><small>Cliquez ailleurs pour fermer</small>';
+        L.popup().setLatLng(e.latlng).setContent(msg).openOn(map);
+      });
       
     } catch (e) {
       console.error('[DEBUG] ERREUR lors de l\'ajout de la couche de tuiles:', e);
