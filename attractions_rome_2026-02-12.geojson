@@ -202,6 +202,34 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          12.475726604461672,
+          41.89986023769353
+        ]
+      },
+      "properties": {
+        "name": "[Déjeuner] Ristorante Grano",
+        "description": "Visite prévue le Mardi 2026-04-14 de 12:00 à 13:00",
+        "prix": 30,
+        "duree": "1:00:00",
+        "date": "2026-04-14",
+        "heure_debut": "12:00",
+        "heure_fin": "13:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.ristorantegrano.it/en/the-grano-menu/",
+        "priorite": "basse",
+        "ordre": "2.5",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           12.4747,
           41.9002
         ]
@@ -398,6 +426,34 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          12.45727300643921,
+          41.902101083701005
+        ]
+      },
+      "properties": {
+        "name": "Place Saint Pierre",
+        "description": "Visite prévue le mercredi 2026-04-15 de 09:40 à 10:00",
+        "prix": 0,
+        "duree": "0:20:00",
+        "date": "2026-04-15",
+        "heure_debut": "09:40",
+        "heure_fin": "10:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "",
+        "priorite": "moyenne",
+        "ordre": "3.2",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           12.4533578,
           41.9020352
         ]
@@ -510,8 +566,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          12.4668459,
-          41.8911586
+          12.46692627668381,
+          41.89117983383062
         ]
       },
       "properties": {
@@ -531,6 +587,34 @@
         "priorite": "moyenne",
         "ordre": "3.7",
         "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.473178505897524,
+          41.886299762934144
+        ]
+      },
+      "properties": {
+        "name": "[Dîner] Ristorante Controluce",
+        "description": "Visite prévue le Mercredi 2026-04-15 de 19:00 à 21:00",
+        "prix": 0,
+        "duree": "2:00:00",
+        "date": "2026-04-15",
+        "heure_debut": "19:00",
+        "heure_fin": "21:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.contro-luce.com/6/",
+        "priorite": "basse",
+        "ordre": "3.8",
+        "commentaire": "Via della Luce, 44, 00153 Roma RM, Italie"
       }
     },
     {
@@ -643,6 +727,34 @@
         "priorite": "haute",
         "ordre": "4.2",
         "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.485162615776064,
+          41.901622524208406
+        ]
+      },
+      "properties": {
+        "name": "[Déjeuner] Manger à l'appartement",
+        "description": "Visite prévue le Jeudi 2026-04-16 de 13:00 à 14:30",
+        "prix": 0,
+        "duree": "1:30:00",
+        "date": "2026-04-16",
+        "heure_debut": "13:00",
+        "heure_fin": "14:30",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "http://www.ristorantenino.it",
+        "priorite": "basse",
+        "ordre": "4.3",
+        "commentaire": "Adresse : Via in Arcione 98, Trevi, 00187 Rome, Italie"
       }
     },
     {
@@ -818,6 +930,34 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
+          12.48710721731186,
+          41.89596447130867
+        ]
+      },
+      "properties": {
+        "name": "[Déjeuner] A Casa Tua",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 12:00 à 13:00",
+        "prix": 0,
+        "duree": "1:00:00",
+        "date": "2026-04-17",
+        "heure_debut": "12:00",
+        "heure_fin": "13:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.acasatuaristorante.it/",
+        "priorite": "basse",
+        "ordre": "5.3",
+        "commentaire": "Adresse : Largo Angelicum, 3, 00184 Roma RM, Italie"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
           12.4918238,
           41.8902572
         ]
@@ -874,8 +1014,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          12.4853087,
-          41.8861584
+          12.484942674636844,
+          41.88649329982406
         ]
       },
       "properties": {
@@ -895,6 +1035,62 @@
         "priorite": "moyenne",
         "ordre": "5.6",
         "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.500794529914856,
+          41.90160234202612
+        ]
+      },
+      "properties": {
+        "name": "Stazione Roma Termini",
+        "description": "Visite prévue le vendredi 2026-04-17 de 16:45 à 18:00",
+        "prix": 0,
+        "duree": "01:15:00",
+        "date": "2026-04-17",
+        "heure_debut": "16:45",
+        "heure_fin": "18:00",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Bus",
+        "carte": "",
+        "reservation": true,
+        "url": "",
+        "priorite": "moyenne",
+        "ordre": "5.7",
+        "commentaire": "Début Hop On / Hop Off"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48864680528641,
+          41.90351111319468
+        ]
+      },
+      "properties": {
+        "name": "Piazza Barberini",
+        "description": "Visite prévue le vendredi 2026-04-17 de 18:00 à 18:15",
+        "prix": 0,
+        "duree": "00:15:00",
+        "date": "2026-04-17",
+        "heure_debut": "18:00",
+        "heure_fin": "18:15",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Bus",
+        "carte": "",
+        "reservation": true,
+        "url": "",
+        "priorite": "moyenne",
+        "ordre": "5.8",
+        "commentaire": "Fin Hop On / Hop Off"
       }
     },
     {
