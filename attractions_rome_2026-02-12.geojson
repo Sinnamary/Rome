@@ -70,7 +70,7 @@
         "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
         "description": "Visite prévue le Mardi 2026-04-14 de 09:00 à 09:05",
         "prix": 0,
-        "duree": "0:05:00",
+        "duree": "0 days 00:05:00",
         "date": "2026-04-14",
         "heure_debut": "09:00",
         "heure_fin": "09:05",
@@ -98,7 +98,7 @@
         "name": "Fontana di Trevi",
         "description": "Visite prévue le Mardi 2026-04-14 de 09:05 à 09:20",
         "prix": 2,
-        "duree": "0:15:00",
+        "duree": "0 days 00:15:00",
         "date": "2026-04-14",
         "heure_debut": "09:05",
         "heure_fin": "09:20",
@@ -107,7 +107,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": false,
-        "url": "https://www.partir-a-rome.com/visites-incontournables/fontaine-trevi",
+        "url": "",
         "priorite": "moyenne",
         "ordre": "2.1",
         "commentaire": ""
@@ -126,7 +126,7 @@
         "name": "Palazzo Doria Pamphilj",
         "description": "Visite prévue le Mardi 2026-04-14 de 09:30 à 11:00",
         "prix": 17,
-        "duree": "1:30:00",
+        "duree": "0 days 01:30:00",
         "date": "2026-04-14",
         "heure_debut": "09:30",
         "heure_fin": "11:00",
@@ -154,7 +154,7 @@
         "name": "Piazza della Minerva",
         "description": "Visite prévue le Mardi 2026-04-14 de 11:15 à 11:30",
         "prix": 0,
-        "duree": "0:15:00",
+        "duree": "0 days 00:15:00",
         "date": "2026-04-14",
         "heure_debut": "11:15",
         "heure_fin": "11:30",
@@ -163,7 +163,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": false,
-        "url": "https://www.cityzeum.com/la-place-de-la-minerve",
+        "url": "",
         "priorite": "moyenne",
         "ordre": "2.3",
         "commentaire": ""
@@ -182,7 +182,7 @@
         "name": "Piazza Navona",
         "description": "Visite prévue le Mardi 2026-04-14 de 11:40 à 12:00",
         "prix": 0,
-        "duree": "0:20:00",
+        "duree": "0 days 00:20:00",
         "date": "2026-04-14",
         "heure_debut": "11:40",
         "heure_fin": "12:00",
@@ -191,7 +191,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": false,
-        "url": "https://bonjourrome.fr/piazza-navona-rome/",
+        "url": "",
         "priorite": "moyenne",
         "ordre": "2.4",
         "commentaire": ""
@@ -210,7 +210,7 @@
         "name": "[Déjeuner] Ristorante Grano",
         "description": "Visite prévue le Mardi 2026-04-14 de 12:00 à 13:00",
         "prix": 30,
-        "duree": "1:00:00",
+        "duree": "0 days 01:00:00",
         "date": "2026-04-14",
         "heure_debut": "12:00",
         "heure_fin": "13:00",
@@ -238,7 +238,7 @@
         "name": "San Luigi dei Francesi",
         "description": "Visite prévue le Mardi 2026-04-14 de 13:15 à 13:45",
         "prix": 0,
-        "duree": "0:30:00",
+        "duree": "0 days 00:30:00",
         "date": "2026-04-14",
         "heure_debut": "13:15",
         "heure_fin": "13:45",
@@ -247,7 +247,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": false,
-        "url": "https://www.turismoroma.it/fr/places/%C3%A9glise-saint-louis-des-fran%C3%A7ais",
+        "url": "",
         "priorite": "moyenne",
         "ordre": "2.6",
         "commentaire": ""
@@ -266,7 +266,7 @@
         "name": "Panthéon",
         "description": "Visite prévue le Mardi 2026-04-14 de 14:00 à 14:45",
         "prix": 5,
-        "duree": "0:45:00",
+        "duree": "0 days 00:45:00",
         "date": "2026-04-14",
         "heure_debut": "14:00",
         "heure_fin": "14:45",
@@ -275,7 +275,7 @@
         "transport": "Marche",
         "carte": "Roma",
         "reservation": true,
-        "url": "https://portale.museiitaliani.it",
+        "url": "https://portale.museiitaliani.it/b2c/buyTicketless/33f77159-0acd-40c4-8524-701f33aae108",
         "priorite": "haute",
         "ordre": "2.7",
         "commentaire": ""
@@ -294,7 +294,7 @@
         "name": "Santa Maria Maggiore",
         "description": "Visite prévue le Mardi 2026-04-14 de 16:15 à 16:45",
         "prix": 0,
-        "duree": "0:30:00",
+        "duree": "0 days 00:30:00",
         "date": "2026-04-14",
         "heure_debut": "16:15",
         "heure_fin": "16:45",
@@ -303,7 +303,7 @@
         "transport": "Marche",
         "carte": "",
         "reservation": false,
-        "url": "https://romesite.fr/sainte-marie-majeure.html",
+        "url": "",
         "priorite": "moyenne",
         "ordre": "2.8",
         "commentaire": ""
@@ -322,7 +322,7 @@
         "name": "Musée National Romain - Palazzo Massimo",
         "description": "Visite prévue le Mardi 2026-04-14 de 17:00 à 19:00",
         "prix": 15,
-        "duree": "2:00:00",
+        "duree": "0 days 02:00:00",
         "date": "2026-04-14",
         "heure_debut": "17:00",
         "heure_fin": "19:00",
@@ -331,7 +331,7 @@
         "transport": "Marche",
         "carte": "Roma",
         "reservation": true,
-        "url": "https://museonazionaleromano.beniculturali.it/en/opening-hours-and-tickets/",
+        "url": "https://portale.museiitaliani.it/b2c/buyTicketless/8b7cf5ae-2412-42ec-964c-988a4cb49a40",
         "priorite": "haute",
         "ordre": "2.9",
         "commentaire": ""
@@ -378,7 +378,7 @@
         "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
         "description": "Visite prévue le Mercredi 2026-04-15 de 08:40 à 09:00",
         "prix": 0,
-        "duree": "0:20:00",
+        "duree": "0 days 00:20:00",
         "date": "2026-04-15",
         "heure_debut": "08:40",
         "heure_fin": "09:00",
@@ -406,7 +406,7 @@
         "name": "Pont Saint-Ange",
         "description": "Visite prévue le Mercredi 2026-04-15 de 09:05 à 09:20",
         "prix": 0,
-        "duree": "0:15:00",
+        "duree": "0 days 00:15:00",
         "date": "2026-04-15",
         "heure_debut": "09:05",
         "heure_fin": "09:20",
@@ -434,7 +434,7 @@
         "name": "Place Saint Pierre",
         "description": "Visite prévue le mercredi 2026-04-15 de 09:40 à 10:00",
         "prix": 0,
-        "duree": "0:20:00",
+        "duree": "0 days 00:20:00",
         "date": "2026-04-15",
         "heure_debut": "09:40",
         "heure_fin": "10:00",
@@ -462,7 +462,7 @@
         "name": "Basilique Saint-Pierre",
         "description": "Visite prévue le mercredi 2026-04-15 de 10:00 à 11:00",
         "prix": 0,
-        "duree": "1:00:00",
+        "duree": "0 days 01:00:00",
         "date": "2026-04-15",
         "heure_debut": "10:00",
         "heure_fin": "11:00",
@@ -490,7 +490,7 @@
         "name": "Chapelle Sixtine",
         "description": "Visite prévue le Mercredi 2026-04-15 de 11:00 à 11:30",
         "prix": 0,
-        "duree": "0:30:00",
+        "duree": "0 days 00:30:00",
         "date": "2026-04-15",
         "heure_debut": "11:00",
         "heure_fin": "11:30",
@@ -518,7 +518,7 @@
         "name": "Galeries du Vatican",
         "description": "Visite prévue le Mercredi 2026-04-15 de 11:30 à 13:00",
         "prix": 0,
-        "duree": "1:30:00",
+        "duree": "0 days 01:30:00",
         "date": "2026-04-15",
         "heure_debut": "11:30",
         "heure_fin": "13:00",
@@ -546,7 +546,7 @@
         "name": "Musées du Vatican",
         "description": "Visite prévue le Mercredi 2026-04-15 de 14:00 à 17:00",
         "prix": 0,
-        "duree": "3:00:00",
+        "duree": "0 days 03:00:00",
         "date": "2026-04-15",
         "heure_debut": "14:00",
         "heure_fin": "17:00",
@@ -574,7 +574,7 @@
         "name": "Trastevere",
         "description": "Visite prévue le mercredi 2026-04-15 de 17:30 à 19:00",
         "prix": 0,
-        "duree": "1:30:00",
+        "duree": "0 days 01:30:00",
         "date": "2026-04-15",
         "heure_debut": "17:30",
         "heure_fin": "19:00",
@@ -602,7 +602,7 @@
         "name": "[Dîner] Ristorante Controluce",
         "description": "Visite prévue le Mercredi 2026-04-15 de 19:00 à 21:00",
         "prix": 0,
-        "duree": "2:00:00",
+        "duree": "0 days 02:00:00",
         "date": "2026-04-15",
         "heure_debut": "19:00",
         "heure_fin": "21:00",
@@ -658,7 +658,7 @@
         "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
         "description": "Visite prévue le Jeudi 2026-04-16 de 08:30 à 09:00",
         "prix": 0,
-        "duree": "0:30:00",
+        "duree": "0 days 00:30:00",
         "date": "2026-04-16",
         "heure_debut": "08:30",
         "heure_fin": "09:00",
@@ -686,7 +686,7 @@
         "name": "Galleria Borghese",
         "description": "Visite prévue le Jeudi 2026-04-16 de 09:00 à 11:00",
         "prix": 0,
-        "duree": "2:00:00",
+        "duree": "0 days 02:00:00",
         "date": "2026-04-16",
         "heure_debut": "09:00",
         "heure_fin": "11:00",
@@ -714,7 +714,7 @@
         "name": "Museo Nazionale Etrusco",
         "description": "Visite prévue le Jeudi 2026-04-16 de 11:30 à 13:00",
         "prix": 13,
-        "duree": "1:30:00",
+        "duree": "0 days 01:30:00",
         "date": "2026-04-16",
         "heure_debut": "11:30",
         "heure_fin": "13:00",
@@ -742,7 +742,7 @@
         "name": "[Déjeuner] Manger à l'appartement",
         "description": "Visite prévue le Jeudi 2026-04-16 de 13:00 à 14:30",
         "prix": 0,
-        "duree": "1:30:00",
+        "duree": "0 days 01:30:00",
         "date": "2026-04-16",
         "heure_debut": "13:00",
         "heure_fin": "14:30",
@@ -770,7 +770,7 @@
         "name": "Altare della Patria",
         "description": "Visite prévue le Jeudi 2026-04-16 de 14:45 à 15:00",
         "prix": 0,
-        "duree": "0:15:00",
+        "duree": "0 days 00:15:00",
         "date": "2026-04-16",
         "heure_debut": "14:45",
         "heure_fin": "15:00",
@@ -798,7 +798,7 @@
         "name": "Musei Capitolini",
         "description": "Visite prévue le Jeudi 2026-04-16 de 15:00 à 17:00",
         "prix": 15,
-        "duree": "2:00:00",
+        "duree": "0 days 02:00:00",
         "date": "2026-04-16",
         "heure_debut": "15:00",
         "heure_fin": "17:00",
@@ -852,12 +852,12 @@
       },
       "properties": {
         "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
-        "description": "Visite prévue le Vendredi 2026-04-17 de 09:15 à 09:30",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 08:30 à 09:00",
         "prix": 0,
-        "duree": "0:15:00",
+        "duree": "0 days 00:30:00",
         "date": "2026-04-17",
-        "heure_debut": "09:15",
-        "heure_fin": "09:30",
+        "heure_debut": "08:30",
+        "heure_fin": "09:00",
         "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
@@ -874,102 +874,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          12.4840593,
-          41.8960673
-        ]
-      },
-      "properties": {
-        "name": "Domus Romane – Palazzo Valentini",
-        "description": "Visite prévue le Vendredi 2026-04-17 de 09:30 à 11:00",
-        "prix": 15,
-        "duree": "1:30:00",
-        "date": "2026-04-17",
-        "heure_debut": "09:30",
-        "heure_fin": "11:00",
-        "temps_trajet": "",
-        "distance": "",
-        "transport": "Marche",
-        "carte": "Roma",
-        "reservation": true,
-        "url": "https://www.rome-roma.net/domus-romane-du-palazzo-valentini/",
-        "priorite": "haute",
-        "ordre": "5.1",
-        "commentaire": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          12.4907489,
-          41.8897934
-        ]
-      },
-      "properties": {
-        "name": "Arco di Costantino",
-        "description": "Visite prévue le Vendredi 2026-04-17 de 11:15 à 11:45",
-        "prix": 0,
-        "duree": "0:30:00",
-        "date": "2026-04-17",
-        "heure_debut": "11:15",
-        "heure_fin": "11:45",
-        "temps_trajet": "",
-        "distance": "",
-        "transport": "Marche",
-        "carte": "",
-        "reservation": false,
-        "url": "https://colosseo-roma.it/fr/explorer/arc-constantinois/",
-        "priorite": "moyenne",
-        "ordre": "5.2",
-        "commentaire": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          12.48710721731186,
-          41.89596447130867
-        ]
-      },
-      "properties": {
-        "name": "[Déjeuner] A Casa Tua",
-        "description": "Visite prévue le Vendredi 2026-04-17 de 12:00 à 13:00",
-        "prix": 0,
-        "duree": "1:00:00",
-        "date": "2026-04-17",
-        "heure_debut": "12:00",
-        "heure_fin": "13:00",
-        "temps_trajet": "",
-        "distance": "",
-        "transport": "Marche",
-        "carte": "",
-        "reservation": true,
-        "url": "https://www.acasatuaristorante.it/",
-        "priorite": "basse",
-        "ordre": "5.3",
-        "commentaire": "Adresse : Largo Angelicum, 3, 00184 Roma RM, Italie"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           12.4918238,
           41.8902572
         ]
       },
       "properties": {
         "name": "Colisée",
-        "description": "Visite prévue le Vendredi 2026-04-17 de 13:00 à 15:00",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 09:00 à 11:00",
         "prix": 0,
-        "duree": "02:00:00",
+        "duree": "0 days 02:00:00",
         "date": "2026-04-17",
-        "heure_debut": "13:00",
-        "heure_fin": "15:00",
+        "heure_debut": "09:00",
+        "heure_fin": "11:00",
         "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
@@ -977,7 +893,7 @@
         "reservation": true,
         "url": "https://www.tickets-rome.com/fr/colosseum/plan-your-visit-colosseum/",
         "priorite": "haute",
-        "ordre": "5.4",
+        "ordre": "5.1",
         "commentaire": ""
       }
     },
@@ -992,18 +908,102 @@
       },
       "properties": {
         "name": "Forum Romain",
-        "description": "Visite prévue le Vendredi 2026-04-17 de 15:00 à 16:00",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 11:00 à 12:00",
         "prix": 0,
-        "duree": "01:00:00",
+        "duree": "0 days 01:00:00",
         "date": "2026-04-17",
-        "heure_debut": "15:00",
-        "heure_fin": "16:00",
+        "heure_debut": "11:00",
+        "heure_fin": "12:00",
         "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
         "carte": "",
         "reservation": true,
         "url": "https://www.tiqets.com/fr/billets-forum-romain-l146049/",
+        "priorite": "haute",
+        "ordre": "5.2",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4907489,
+          41.8897934
+        ]
+      },
+      "properties": {
+        "name": "Arco di Costantino",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 12:00 à 12:15",
+        "prix": 0,
+        "duree": "0 days 00:15:00",
+        "date": "2026-04-17",
+        "heure_debut": "12:00",
+        "heure_fin": "12:15",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": false,
+        "url": "https://colosseo-roma.it/fr/explorer/arc-constantinois/",
+        "priorite": "moyenne",
+        "ordre": "5.3",
+        "commentaire": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.48710721731186,
+          41.89596447130867
+        ]
+      },
+      "properties": {
+        "name": "[Déjeuner] A Casa Tua",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 12:15 à 13:15",
+        "prix": 0,
+        "duree": "0 days 01:00:00",
+        "date": "2026-04-17",
+        "heure_debut": "12:15",
+        "heure_fin": "13:15",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "",
+        "reservation": true,
+        "url": "https://www.acasatuaristorante.it/",
+        "priorite": "basse",
+        "ordre": "5.4",
+        "commentaire": "Adresse : Largo Angelicum, 3, 00184 Roma RM, Italie"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.4840593,
+          41.8960673
+        ]
+      },
+      "properties": {
+        "name": "Domus Romane – Palazzo Valentini",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 13:30 à 15:30",
+        "prix": 15,
+        "duree": "0 days 02:00:00",
+        "date": "2026-04-17",
+        "heure_debut": "13:30",
+        "heure_fin": "15:30",
+        "temps_trajet": "",
+        "distance": "",
+        "transport": "Marche",
+        "carte": "Roma",
+        "reservation": true,
+        "url": "https://www.rome-roma.net/domus-romane-du-palazzo-valentini/",
         "priorite": "haute",
         "ordre": "5.5",
         "commentaire": ""
@@ -1014,46 +1014,18 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          12.484942674636844,
-          41.88649329982406
+          12.482228279113771,
+          41.89540366322011
         ]
       },
       "properties": {
-        "name": "Circo Massimo",
-        "description": "Visite prévue le vendredi 2026-04-17 de 16:15 à 16:30",
+        "name": "Piazza Venezia - Début Hop on",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 16:00 à 17:00",
         "prix": 0,
-        "duree": "00:15:00",
+        "duree": "0 days 01:00:00",
         "date": "2026-04-17",
-        "heure_debut": "16:15",
-        "heure_fin": "16:30",
-        "temps_trajet": "",
-        "distance": "",
-        "transport": "Marche",
-        "carte": "",
-        "reservation": true,
-        "url": "",
-        "priorite": "moyenne",
-        "ordre": "5.6",
-        "commentaire": ""
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          12.500794529914856,
-          41.90160234202612
-        ]
-      },
-      "properties": {
-        "name": "Stazione Roma Termini",
-        "description": "Visite prévue le vendredi 2026-04-17 de 16:45 à 18:00",
-        "prix": 0,
-        "duree": "01:15:00",
-        "date": "2026-04-17",
-        "heure_debut": "16:45",
-        "heure_fin": "18:00",
+        "heure_debut": "16:00",
+        "heure_fin": "17:00",
         "temps_trajet": "",
         "distance": "",
         "transport": "Bus",
@@ -1061,8 +1033,8 @@
         "reservation": true,
         "url": "",
         "priorite": "moyenne",
-        "ordre": "5.7",
-        "commentaire": "Début Hop On / Hop Off"
+        "ordre": "5.6",
+        "commentaire": "Fin Hop On / Hop Off"
       }
     },
     {
@@ -1075,13 +1047,13 @@
         ]
       },
       "properties": {
-        "name": "Piazza Barberini",
-        "description": "Visite prévue le vendredi 2026-04-17 de 18:00 à 18:15",
+        "name": "Piazza Barberini - Fin Hop off",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 17:00 à 17:15",
         "prix": 0,
-        "duree": "00:15:00",
+        "duree": "0 days 00:15:00",
         "date": "2026-04-17",
-        "heure_debut": "18:00",
-        "heure_fin": "18:15",
+        "heure_debut": "17:00",
+        "heure_fin": "17:15",
         "temps_trajet": "",
         "distance": "",
         "transport": "Bus",
@@ -1089,7 +1061,7 @@
         "reservation": true,
         "url": "",
         "priorite": "moyenne",
-        "ordre": "5.8",
+        "ordre": "5.7",
         "commentaire": "Fin Hop On / Hop Off"
       }
     },
@@ -1104,12 +1076,12 @@
       },
       "properties": {
         "name": "[Hébergement] Via in Arcione 98, Trevi, 00187 Rome, Italie",
-        "description": "Visite prévue le Vendredi 2026-04-17",
+        "description": "Visite prévue le Vendredi 2026-04-17 de 17:15 à 17:30",
         "prix": 0,
-        "duree": "",
+        "duree": "0 days 00:15:00",
         "date": "2026-04-17",
-        "heure_debut": "",
-        "heure_fin": "",
+        "heure_debut": "17:15",
+        "heure_fin": "17:30",
         "temps_trajet": "",
         "distance": "",
         "transport": "Marche",
